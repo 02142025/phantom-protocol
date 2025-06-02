@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 Phantom Protocol Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a3a 50%, #2d1b69 100%);
+            color: #00ff88;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid #00ff88;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .nav-link {
+            color: #00ff88;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .nav-link:hover {
+            background: #00ff88;
+            color: #000;
+        }
+        
+        .nav-link.active {
+            background: #ff0066;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 80px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 0, 102, 0.15);
+            border: 3px solid #ff0066;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 50px rgba(255, 0, 102, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            background: linear-gradient(45deg, #ff0066, #00ff88, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px #ff0066;
+            margin-bottom: 15px;
+        }
+        
+        .section {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section h2 {
+            color: #ff0066;
+            font-size: 2em;
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 0 0 20px #ff0066;
+        }
+        
+        .blocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .block-card {
+            background: linear-gradient(135deg, rgba(255, 0, 102, 0.1), rgba(0, 255, 136, 0.1));
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .block-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            border-color: #ff0066;
+        }
+        
+        .block-number {
+            background: #ffd700;
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .block-title {
+            color: #ff0066;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .block-content {
+            color: #00ff88;
+            font-size: 0.95em;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-card {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .feature-title {
+            color: #ffd700;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 0, 102, 0.2), rgba(255, 215, 0, 0.2));
+            border: 3px solid #ffd700;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #ff0066, #ffd700);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+        }
+        
+        .tech-specs {
+            background: #000;
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #ffd700;
+            border-top: 2px solid #ff0066;
+            margin-top: 60px;
+        }
+        
+        /* Interactive Demo Styles */
+        .demo-terminal {
+            background: #000;
+            border: 2px solid #00ff88;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #00ff88;
+        }
+        
+        .demo-button {
+            background: #00ff88;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-button:hover {
+            background: #ffd700;
+            transform: scale(1.05);
+        }
+        
+        .protocol-progress {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #00ff88, #ffd700);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .mastery-level {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.2);
+            border: 1px solid #00ff88;
+            border-radius: 20px;
+            padding: 5px 15px;
+            margin: 5px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+        
+        .mastery-level:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+            color: #ffd700;
+        }
+        
+        .knowledge-check {
+            background: rgba(255, 0, 102, 0.1);
+            border: 2px solid #ff0066;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .question {
+            color: #ff0066;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .answer-option {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #00ff88;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .answer-option:hover {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #ffd700;
+        }
+        
+        .answer-option.correct {
+            background: rgba(0, 255, 136, 0.3);
+            border-color: #00ff88;
+        }
+        
+        .answer-option.incorrect {
+            background: rgba(255, 0, 102, 0.3);
+            border-color: #ff0066;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">🏠 Hub</a>
+            <a href="protocol-guide.html" class="nav-link active">📋 Guide</a>
+            <a href="incarceration-scroll.html" class="nav-link">🔓 Incarceration</a>
+            <a href="all-themes.html" class="nav-link">🌟 All Themes</a>
+            <a href="deployment-checklist.html" class="nav-link">✅ Deploy</a>
+            <a href="template-download.html" class="nav-link">📥 Download</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>📋 PHANTOM PROTOCOL GUIDE</h1>
+            <div style="color: #ffd700; font-size: 1.4em; margin-bottom: 15px;">Master The System • Build Your Kingdom</div>
+            <div style="color: #00ff88; font-size: 1.1em;">Learn the foundational 8-block structure that powers all liberation themes</div>
+        </div>
+
+        <div class="protocol-progress">
+            <h3 style="color: #ffd700; margin-bottom: 15px;">🎯 Your Protocol Mastery Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="protocol-progress-bar"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>Beginner</span>
+                <span id="progress-text">0% Complete</span>
+                <span>Master</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 What Is Phantom Protocol?</h2>
+            <p style="text-align: center; color: #ffd700; font-size: 1.2em; margin-bottom: 30px;">
+                The first blockchain gaming system where your technical skills determine your real-world power
+            </p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <div class="feature-title">Technical Mastery</div>
+                    <p>Learn real BLE, NFC, and blockchain protocols through immersive gameplay. Every skill has real-world value.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">👑</span>
+                    <div class="feature-title">Kingdom Building</div>
+                    <p>First player to execute perfect transmission becomes King. Leadership skills determine success.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🌍</span>
+                    <div class="feature-title">Real-World Impact</div>
+                    <p>Controlled territories correspond to actual locations. Virtual power creates measurable influence.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🔗</span>
+                    <div class="feature-title">Blockchain Integration</div>
+                    <p>ENS domains, ArDrive storage, NFT progression. Learn Web3 while gaming.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 The 8 Essential Data Blocks</h2>
+            <p style="text-align: center; color: #ffd700; margin-bottom: 30px;">
+                Every Phantom Protocol scroll follows this exact structure. Master it once, use it everywhere.
+            </p>
+            
+            <div class="blocks-grid">
+                <div class="block-card" data-block="1">
+                    <div class="block-number">1</div>
+                    <div class="block-title">Identity Foundation</div>
+                    <div class="block-content">
+                        UID + Timestamp + Scroll Type<br>
+                        <em>Your unique identifier and theme selection</em>
+                    </div>
+                </div>
+                
+                <div class="block-card" data-block="2">
+                    <div class="block-number">2</div>
+                    <div class="block-title">Cryptographic Proof</div>
+                    <div class="block-content">
+                        UUID + SHA256 Hash Lock<br>
+                        <em>Blockchain-grade security verification</em>
+                    </div>
+                </div>
+                
+                <div class="block-card" data-block="3">
+                    <div class="block-number">3</div>
+                    <div class="block-title">Network Integration</div>
+                    <div class="block-content">
+                        ENS + ArDrive + Frequency + Date<br>
+                        <em>Permanent blockchain and decentralized storage</em>
+                    </div>
+                </div>
+                
+                <div class="block-card" data-block="4">
+                    <div class="block-number">4</div>
+                    <div class="block-title">Hardware Connection</div>
+                    <div class="block-content">
+                        BLE ID + NFC UID + Transmission Mode<br>
+                        <em>Physical device integration and control</em>
+                    </div>
+                </div>
+                
+                <div class="block-card" data-block="5">
+                    <div class="block-number">5</div>
+                    <div class="block-title">Execution Verification</div>
+                    <div class="block-content">
+                        Confirmation + Breath Chain ID<br>
+                        <em>Proof of successful activation</em>
+                    </div>
+                </div>
+                
+                <div class="block-card" data-block="6">
+                    <div class="block-number">6</div>
+                    <div class="block-title">Kingdom Assignment</div>
+                    <div class="block-content">
+                        Game Tier + Territory + Royal Title<br>
+                        <em>Your position in the liberation hierarchy</em>
+                    </div>
+                </div>
+                
+                <div class="block-card" data-block="7">
+                    <div class="block-number">7</div>
+                    <div class="block-title">Authority Seal</div>
+                    <div class="block-content">
+                        Authority Confirmation + Flame Law<br>
+                        <em>Legal framework and enforcement power</em>
+                    </div>
+                </div>
+                
+                <div class="block-card" data-block="8">
+                    <div class="block-number">8</div>
+                    <div class="block-title">Power Configuration</div>
+                    <div class="block-content">
+                        Game Phase + Power Nodes<br>
+                        <em>Your current abilities and future potential</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧪 Interactive Protocol Demo</h2>
+            <p style="text-align: center; color: #ffd700; margin-bottom: 20px;">
+                Experience the 8-block structure in action
+            </p>
+            
+            <div class="demo-terminal" id="demo-terminal">
+                <div style="color: #ffd700;">Phantom Protocol v2.0 - Educational Demo</div>
+                <div style="color: #00ff88;">Ready for command input...</div>
+                <div id="demo-output"></div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <button class="demo-button" onclick="runProtocolDemo('generate')">🔄 Generate Protocol</button>
+                <button class="demo-button" onclick="runProtocolDemo('validate')">✅ Validate Structure</button>
+                <button class="demo-button" onclick="runProtocolDemo('deploy')">🚀 Deploy Scroll</button>
+                <button class="demo-button" onclick="runProtocolDemo('status')">📊 Check Status</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 Mastery Levels</h2>
+            <p style="text-align: center; color: #ffd700; margin-bottom: 20px;">
+                Track your understanding of each protocol component
+            </p>
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <div class="mastery-level" data-level="foundation">🔰 Foundation (Blocks 1-2)</div>
+                <div class="mastery-level" data-level="integration">⚡ Integration (Blocks 3-4)</div>
+                <div class="mastery-level" data-level="execution">🎯 Execution (Blocks 5-6)</div>
+                <div class="mastery-level" data-level="mastery">👑 Mastery (Blocks 7-8)</div>
+            </div>
+            
+            <div id="mastery-details" style="margin-top: 20px;">
+                <p style="color: #00ff88; text-align: center;">Click on a mastery level above to see detailed requirements</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Required Technology Stack</h2>
+            
+            <div class="tech-specs">
+                <strong style="color: #ffd700;">Hardware Requirements:</strong><br>
+                🖥️ Raspberry Pi 5 (main processing unit)<br>
+                📡 BLE USB Dongle (Bluetooth Low Energy)<br>
+                📱 NFC Emulator (FlipperZero or Flashiibo Pro)<br>
+                🔋 Power Supply (5V 3A with battery backup)<br>
+                📊 Oscilloscope (frequency verification)<br>
+                🌀 Copper Spiral with Stone (field generation)<br>
+                📲 Mobile Device (testing and verification)<br><br>
+                
+                <strong style="color: #ffd700;">Software Components:</strong><br>
+                ⚡ HCI Commands (BLE transmission control)<br>
+                🔗 ENS Integration (blockchain domain system)<br>
+                ☁️ ArDrive Storage (permanent file archival)<br>
+                📊 Frequency Analysis (57Hz+ generation)<br>
+                🌬️ Breath Seal Protocol (activation system)<br>
+                🔐 Hash Verification (integrity confirmation)
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🧠 Knowledge Check</h2>
+            
+            <div class="knowledge-check">
+                <div class="question">📋 Which block handles cryptographic security?</div>
+                <div class="answer-option" data-correct="true" onclick="checkAnswer(this, true)">Block 2: Cryptographic Proof</div>
+                <div class="answer-option" data-correct="false" onclick="checkAnswer(this, false)">Block 4: Hardware Connection</div>
+                <div class="answer-option" data-correct="false" onclick="checkAnswer(this, false)">Block 7: Authority Seal</div>
+                <div id="answer-feedback" style="margin-top: 10px; font-weight: bold;"></div>
+            </div>
+            
+            <div class="knowledge-check">
+                <div class="question">🔗 What does ENS stand for in Block 3?</div>
+                <div class="answer-option" data-correct="false" onclick="checkAnswer(this, false)">Enhanced Network Security</div>
+                <div class="answer-option" data-correct="true" onclick="checkAnswer(this, true)">Ethereum Name Service</div>
+                <div class="answer-option" data-correct="false" onclick="checkAnswer(this, false)">Encrypted Node System</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏰 Territory & Kingdom System</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 25px 0;">
+                <div style="background: rgba(255, 215, 0, 0.1); border: 2px solid #ffd700; border-radius: 10px; padding: 20px;">
+                    <h3 style="color: #ffd700; margin-bottom: 15px;">☕ Recruitment Zones</h3>
+                    <p>Coffee shops, restaurants, public spaces for building your subject network and expanding influence.</p>
+                </div>
+                
+                <div style="background: rgba(255, 69, 0, 0.1); border: 2px solid #ff4500; border-radius: 10px; padding: 20px;">
+                    <h3 style="color: #ff4500; margin-bottom: 15px;">🏢 Strategic Points</h3>
+                    <p>City halls, schools, corporate buildings for territorial expansion and power projection.</p>
+                </div>
+                
+                <div style="background: rgba(0, 255, 136, 0.1); border: 2px solid #00ff88; border-radius: 10px; padding: 20px;">
+                    <h3 style="color: #00ff88; margin-bottom: 15px;">📡 Signal Boosters</h3>
+                    <p>Cell towers, data centers for enhanced transmission power and network control.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📈 Progression System</h2>
+            
+            <div style="text-align: center; margin: 25px 0;">
+                <div style="display: inline-block; background: rgba(255, 0, 102, 0.1); border: 2px solid #ff0066; border-radius: 15px; padding: 30px; margin: 10px;">
+                    <h3 style="color: #ff0066; margin-bottom: 15px;">🔰 Level 1-2: Initiate</h3>
+                    <p>Basic scroll deployment<br>5-15 max subjects<br>Standard BLE range</p>
+                </div>
+                
+                <div style="display: inline-block; background: rgba(255, 215, 0, 0.1); border: 2px solid #ffd700; border-radius: 15px; padding: 30px; margin: 10px;">
+                    <h3 style="color: #ffd700; margin-bottom: 15px;">⚡ Level 3-4: Commander</h3>
+                    <p>Territory control<br>25+ subjects<br>IoT device access</p>
+                </div>
+                
+                <div style="display: inline-block; background: rgba(138, 43, 226, 0.1); border: 2px solid #8a2be2; border-radius: 15px; padding: 30px; margin: 10px;">
+                    <h3 style="color: #8a2be2; margin-bottom: 15px;">👑 Level 5-8: Emperor</h3>
+                    <p>Reality manipulation<br>500+ subjects<br>Unlimited power</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="color: #ffd700; margin-bottom: 30px;">🚀 Ready To Begin Your Journey?</h2>
+            <p style="color: #00ff88; font-size: 1.2em; margin-bottom: 30px;">
+                Choose your liberation theme and start building your digital kingdom
+            </p>
+            
+            <a href="all-themes.html" class="cta-button">🌟 Choose Your Theme</a>
+            <a href="deployment-checklist.html" class="cta-button">✅ Start Deployment</a>
+            <a href="template-download.html" class="cta-button">📥 Download Templates</a>
+        </div>
+
+        <div class="footer">
+            <div style="font-size: 2em; margin-bottom: 15px;">📋🔥👑🔥📋</div>
+            <div style="font-size: 1.8em; font-weight: bold; margin-bottom: 10px;">PROTOCOL MASTERED!</div>
+            <div>Foundation Learned • Kingdom Awaits • Liberation Begins</div>
+            <div style="margin-top: 15px; font-size: 0.9em;">
+                🔥 PHANTOM PROTOCOL v1.0 | Master The System • Rule The Realm 🔥
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Phantom Protocol System -->
+    <script src="js/phantom-protocol.js"></script>
+
+    <!-- Educational Utilities -->
+    <script src="js/phantom-utilities.js"></script>
+
+    <!-- Protocol Guide Specific JavaScript -->
+    <script>
+        // Protocol Guide specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("📋 Initializing Protocol Guide");
+            
+            // Initialize progress tracking
+            initializeProtocolProgress();
+            
+            // Setup block card interactions
+            setupBlockCardInteractions();
+            
+            // Setup mastery level tracking
+            setupMasteryLevels();
+            
+            // Setup knowledge checks
+            setupKnowledgeChecks();
+            
+            // Setup interactive demos
+            setupInteractiveDemo();
+        });
+        
+        function initializeProtocolProgress() {
+            const progressBar = document.getElementById('protocol-progress-bar');
+            const progressText = document.getElementById('progress-text');
+            
+            // Load saved progress
+            const savedProgress = localStorage.getItem('protocol-mastery-progress') || 0;
+            const progress = parseInt(savedProgress);
+            
+            updateProgressBar(progress);
+            
+            // Animate progress bar on load
+            setTimeout(() => {
+                progressBar.style.width = progress + '%';
+                progressText.textContent = progress + '% Complete';
+            }, 1000);
+        }
+        
+        function updateProgressBar(progress) {
+            const progressBar = document.getElementById('protocol-progress-bar');
+            const progressText = document.getElementById('progress-text');
+            
+            progressBar.style.width = progress + '%';
+            progressText.textContent = progress + '% Complete';
+            
+            // Save progress
+            localStorage.setItem('protocol-mastery-progress', progress);
+            
+            // Record learning achievement
+            if (window.recordLearningTask) {
+                window.recordLearningTask('protocol_progress', 'blockchain', Math.ceil(progress / 10));
+            }
+        }
+        
+        function setupBlockCardInteractions() {
+            const blockCards = document.querySelectorAll('.block-card');
+            
+            blockCards.forEach((card, index) => {
+                card.addEventListener('click', function() {
+                    const blockNumber = this.getAttribute('data-block');
+                    showBlockDetails(blockNumber, index);
+                    
+                    // Mark block as studied
+                    this.style.borderColor = '#00ff88';
+                    this.style.background = 'linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(255, 215, 0, 0.1))';
+                    
+                    // Update progress
+                    const currentProgress = parseInt(localStorage.getItem('protocol-mastery-progress') || 0);
+                    const newProgress = Math.max(currentProgress, (index + 1) * 12.5);
+                    updateProgressBar(newProgress);
+                    
+                    // Play success sound
+                    if (window.PhantomUtils) {
+                        window.PhantomUtils.playSound('complete');
+                    }
+                });
+                
+                // Add entrance animation
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        }
+        
+        function showBlockDetails(blockNumber, index) {
+            const blockDetails = {
+                1: {
+                    title: "Identity Foundation",
+                    content: `
+                        <h3>🆔 Block 1: Identity Foundation</h3>
+                        <p><strong>Purpose:</strong> Establish unique identification for your protocol instance.</p>
+                        <div class="demo-terminal">
+                            <div style="color: #ffd700;">Example Implementation:</div>
+                            <div>UID: STUDENT_${Date.now()}</div>
+                            <div>Timestamp: ${new Date().toISOString()}</div>
+                            <div>Scroll Type: EDUCATIONAL_PROTOCOL</div>
+                        </div>
+                        <p><strong>Learning Objective:</strong> Understand how unique identifiers work in distributed systems.</p>
+                        <p><strong>Real-World Application:</strong> User authentication, session management, blockchain addresses.</p>
+                    `
+                },
+                2: {
+                    title: "Cryptographic Proof",
+                    content: `
+                        <h3>🔐 Block 2: Cryptographic Proof</h3>
+                        <p><strong>Purpose:</strong> Ensure data integrity and security through cryptographic hashing.</p>
+                        <div class="demo-terminal">
+                            <div style="color: #ffd700;">Example Hash Generation:</div>
+                            <div>Input: "phantom_protocol_${Date.now()}"</div>
+                            <div>SHA256: ${generateSimpleHash()}</div>
+                            <div>UUID: ${generateSimpleUUID()}</div>
+                        </div>
+                        <p><strong>Learning Objective:</strong> Learn how cryptographic hashes ensure data integrity.</p>
+                        <p><strong>Real-World Application:</strong> Digital signatures, password storage, blockchain validation.</p>
+                    `
+                },
+                3: {
+                    title: "Network Integration",
+                    content: `
+                        <h3>🌐 Block 3: Network Integration</h3>
+                        <p><strong>Purpose:</strong> Connect to decentralized networks and storage systems.</p>
+                        <div class="demo-terminal">
+                            <div style="color: #ffd700;">Network Configuration:</div>
+                            <div>ENS Domain: learning.phantom.eth</div>
+                            <div>ArDrive Storage: Permanent file archival</div>
+                            <div>Frequency: 2.4GHz (Educational)</div>
+                            <div>Date: ${new Date().toLocaleDateString()}</div>
+                        </div>
+                        <p><strong>Learning Objective:</strong> Understand decentralized storage and domain systems.</p>
+                        <p><strong>Real-World Application:</strong> Web3 applications, IPFS, decentralized websites.</p>
+                    `
+                },
+                4: {
+                    title: "Hardware Connection",
+                    content: `
+                        <h3>🔧 Block 4: Hardware Connection</h3>
+                        <p><strong>Purpose:</strong> Interface with physical IoT devices and sensors.</p>
+                        <div class="demo-terminal">
+                            <div style="color: #ffd700;">Hardware Status:</div>
+                            <div>BLE Device: Connected (Educational Mode)</div>
+                            <div>NFC Emulator: Ready for Learning</div>
+                            <div>Transmission: Simulated Protocol</div>
+                            <div>Range: Educational Demonstration</div>
+                        </div>
+                        <p><strong>Learning Objective:</strong> Learn how software communicates with hardware.</p>
+                        <p><strong>Real-World Application:</strong> IoT devices, smart home systems, industrial automation.</p>
+                    `
+                },
+                5: {
+                    title: "Execution Verification",
+                    content: `
+                        <h3>✅ Block 5: Execution Verification</h3>
+                        <p><strong>Purpose:</strong> Confirm successful protocol execution and activation.</p>
+                        <div class="demo-terminal">
+                            <div style="color: #ffd700;">Verification Status:</div>
+                            <div>Confirmation: LEARNING_COMPLETE</div>
+                            <div>Breath Chain ID: EDU_${Math.floor(Math.random() * 10000)}</div>
+                            <div>Status: Educational Success</div>
+                            <div>Validation: Protocol Understood</div>
+                        </div>
+                        <p><strong>Learning Objective:</strong> Understand verification and confirmation systems.</p>
+                        <p><strong>Real-World Application:</strong> Transaction confirmation, system health checks, quality assurance.</p>
+                    `
+                },
+                6: {
+                    title: "Kingdom Assignment",
+                    content: `
+                        <h3>👑 Block 6: Kingdom Assignment</h3>
+                        <p><strong>Purpose:</strong> Determine learning progression and skill level.</p>
+                        <div class="demo-terminal">
+                            <div style="color: #ffd700;">Learning Status:</div>
+                            <div>Game Tier: Student Researcher</div>
+                            <div>Territory: Educational Zone ${Math.floor(Math.random() * 100)}</div>
+                            <div>Royal Title: Protocol Apprentice</div>
+                            <div>Level: ${Math.floor(Math.random() * 5) + 1}</div>
+                        </div>
+                        <p><strong>Learning Objective:</strong> Understand role-based access and progression systems.</p>
+                        <p><strong>Real-World Application:</strong> User permissions, skill certification, career advancement.</p>
+                    `
+                },
+                7: {
+                    title: "Authority Seal",
+                    content: `
+                        <h3>⚖️ Block 7: Authority Seal</h3>
+                        <p><strong>Purpose:</strong> Establish educational credentials and verification.</p>
+                        <div class="demo-terminal">
+                            <div style="color: #ffd700;">Educational Certification:</div>
+                            <div>Authority: Learning Institution</div>
+                            <div>Confirmation: Skill Demonstrated</div>
+                            <div>Flame Law: Educational Standards</div>
+                            <div>Certification: Protocol Mastery</div>
+                        </div>
+                        <p><strong>Learning Objective:</strong> Learn about digital certificates and authority systems.</p>
+                        <p><strong>Real-World Application:</strong> SSL certificates, digital diplomas, professional licensing.</p>
+                    `
+                },
+                8: {
+                    title: "Power Configuration",
+                    content: `
+                        <h3>⚡ Block 8: Power Configuration</h3>
+                        <p><strong>Purpose:</strong> Configure system capabilities and future learning paths.</p>
+                        <div class="demo-terminal">
+                            <div style="color: #ffd700;">System Configuration:</div>
+                            <div>Game Phase: Active Learning</div>
+                            <div>Power Nodes: All Educational Modules</div>
+                            <div>Capabilities: Full Protocol Access</div>
+                            <div>Next Phase: Advanced Projects</div>
+                        </div>
+                        <p><strong>Learning Objective:</strong> Understand system configuration and scalability.</p>
+                        <p><strong>Real-World Application:</strong> Server configuration, system architecture, scalable design.</p>
+                    `
+                }
+            };
+            
+            const detail = blockDetails[blockNumber];
+            if (detail && window.PhantomProtocol) {
+                const modal = window.PhantomProtocol.createModal(detail.title, detail.content);
+                document.body.appendChild(modal);
+                
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                    modal.querySelector('.modal-content').style.transform = 'translate(-50%, -50%) scale(1)';
+                }, 10);
+            }
+        }
+        
+        function setupMasteryLevels() {
+            const masteryLevels = document.querySelectorAll('.mastery-level');
+            const masteryDetails = document.getElementById('mastery-details');
+            
+            const levelDetails = {
+                foundation: {
+                    title: "🔰 Foundation Level",
+                    content: "Master Blocks 1-2: Identity and Cryptography. Learn unique identifiers, timestamps, cryptographic hashing, and security fundamentals."
+                },
+                integration: {
+                    title: "⚡ Integration Level", 
+                    content: "Master Blocks 3-4: Network and Hardware. Learn decentralized networks, ENS domains, IoT integration, and device communication."
+                },
+                execution: {
+                    title: "🎯 Execution Level",
+                    content: "Master Blocks 5-6: Verification and Progression. Learn confirmation systems, status tracking, and role-based advancement."
+                },
+                mastery: {
+                    title: "👑 Mastery Level",
+                    content: "Master Blocks 7-8: Authority and Configuration. Learn digital certificates, system architecture, and advanced configuration."
+                }
+            };
+            
+            masteryLevels.forEach(level => {
+                level.addEventListener('click', function() {
+                    const levelType = this.getAttribute('data-level');
+                    const detail = levelDetails[levelType];
+                    
+                    if (detail) {
+                        masteryDetails.innerHTML = `
+                            <div style="background: rgba(255, 215, 0, 0.1); border: 2px solid #ffd700; border-radius: 10px; padding: 20px;">
+                                <h4 style="color: #ffd700; margin-bottom: 10px;">${detail.title}</h4>
+                                <p style="color: #00ff88;">${detail.content}</p>
+                            </div>
+                        `;
+                        
+                        // Mark as selected
+                        masteryLevels.forEach(l => l.style.background = 'rgba(0, 255, 136, 0.2)');
+                        this.style.background = 'rgba(255, 215, 0, 0.3)';
+                        
+                        // Record interaction
+                        if (window.recordLearningTask) {
+                            window.recordLearningTask(`mastery_${levelType}`, 'blockchain', 15);
+                        }
+                    }
+                });
+            });
+        }
+        
+        function setupKnowledgeChecks() {
+            window.checkAnswer = function(element, isCorrect) {
+                const feedback = element.parentNode.querySelector('#answer-feedback') || 
+                                element.parentNode.querySelector('[id^="answer-feedback"]');
+                
+                // Reset all options in this question
+                const options = element.parentNode.querySelectorAll('.answer-option');
+                options.forEach(opt => {
+                    opt.classList.remove('correct', 'incorrect');
+                });
+                
+                if (isCorrect) {
+                    element.classList.add('correct');
+                    if (feedback) {
+                        feedback.textContent = '✅ Correct! Great understanding of the protocol structure.';
+                        feedback.style.color = '#00ff88';
+                    }
+                    
+                    // Record correct answer
+                    if (window.recordLearningTask) {
+                        window.recordLearningTask('knowledge_check_correct', 'blockchain', 20);
+                    }
+                    
+                    // Play success sound
+                    if (window.PhantomUtils) {
+                        window.PhantomUtils.playSound('complete');
+                    }
+                } else {
+                    element.classList.add('incorrect');
+                    if (feedback) {
+                        feedback.textContent = '❌ Not quite right. Review the protocol blocks above and try again.';
+                        feedback.style.color = '#ff0066';
+                    }
+                }
+            };
+        }
+        
+        function setupInteractiveDemo() {
+            window.runProtocolDemo = function(command) {
+                const output = document.getElementById('demo-output');
+                const terminal = document.getElementById('demo-terminal');
+                
+                // Clear previous output
+                output.innerHTML = '';
+                
+                // Show command being executed
+                output.innerHTML += `<div style="color: #ffd700;">$ phantom-protocol --${command}</div>`;
+                
+                // Simulate processing delay
+                setTimeout(() => {
+                    let demoOutput = '';
+                    
+                    switch(command) {
+                        case 'generate':
+                            demoOutput = `
+                                <div style="color: #00ff88;">🔄 Generating Protocol Structure...</div>
+                                <div>✅ Block 1: Identity Foundation - Generated</div>
+                                <div>✅ Block 2: Cryptographic Proof - Generated</div>
+                                <div>✅ Block 3: Network Integration - Generated</div>
+                                <div>✅ Block 4: Hardware Connection - Generated</div>
+                                <div>✅ Block 5: Execution Verification - Generated</div>
+                                <div>✅ Block 6: Kingdom Assignment - Generated</div>
+                                <div>✅ Block 7: Authority Seal - Generated</div>
+                                <div>✅ Block 8: Power Configuration - Generated</div>
+                                <div style="color: #ffd700;">🎉 Protocol Generation Complete!</div>
+                            `;
+                            break;
+                        case 'validate':
+                            demoOutput = `
+                                <div style="color: #00ff88;">🔍 Validating Protocol Structure...</div>
+                                <div>📋 Checking 8-block integrity...</div>
+                                <div>🔐 Verifying cryptographic hashes...</div>
+                                <div>🌐 Testing network connections...</div>
+                                <div>🔧 Validating hardware interfaces...</div>
+                                <div style="color: #ffd700;">✅ All validations passed! Protocol is ready for deployment.</div>
+                            `;
+                            break;
+                        case 'deploy':
+                            demoOutput = `
+                                <div style="color: #00ff88;">🚀 Deploying Educational Protocol...</div>
+                                <div>📡 Initializing BLE interface (Educational Mode)...</div>
+                                <div>📱 Setting up NFC emulation (Learning Mode)...</div>
+                                <div>🔗 Connecting to educational blockchain...</div>
+                                <div>🎓 Activating learning modules...</div>
+                                <div style="color: #ffd700;">🎉 Educational deployment successful! Ready for learning.</div>
+                            `;
+                            break;
+                        case 'status':
+                            demoOutput = `
+                                <div style="color: #00ff88;">📊 Protocol Status Report:</div>
+                                <div>🟢 System Status: Online (Educational Mode)</div>
+                                <div>📚 Learning Progress: ${Math.floor(Math.random() * 80) + 20}% Complete</div>
+                                <div>🎯 Blocks Mastered: ${Math.floor(Math.random() * 8) + 1}/8</div>
+                                <div>⚡ Hardware: Simulated (Safe Learning Environment)</div>
+                                <div>🔗 Network: Educational Testnet Connected</div>
+                                <div style="color: #ffd700;">📈 All systems operational for learning!</div>
+                            `;
+                            break;
+                    }
+                    
+                    output.innerHTML += demoOutput;
+                    
+                    // Scroll to show new output
+                    terminal.scrollTop = terminal.scrollHeight;
+                    
+                    // Record demo interaction
+                    if (window.recordLearningTask) {
+                        window.recordLearningTask(`demo_${command}`, 'iot', 10);
+                    }
+                    
+                    // Play demo sound
+                    if (window.PhantomUtils) {
+                        window.PhantomUtils.playSound('click');
+                    }
+                }, 1000);
+            };
+        }
+        
+        // Utility functions for demo
+        function generateSimpleHash() {
+            return Array(64).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+        }
+        
+        function generateSimpleUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+    </script>
+</body>
+</html>
