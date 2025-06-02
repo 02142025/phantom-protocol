@@ -77,7 +77,7 @@ phantom-protocol/
 ## 🚀 **Quick Start**
 
 ### **For Players:**
-1. **Choose Your Theme** - Visit the [live site](https://yourusername.github.io/phantom-protocol)
+1. **Choose Your Theme** - Visit the Live site](https://02142025.github.io/phantom-protocol)
 2. **Read the Protocol Guide** - Understand the 8-block system
 3. **Download Templates** - Get your scroll files ready
 4. **Gather Hardware** - Assemble your technical setup
@@ -87,7 +87,7 @@ phantom-protocol/
 ### **For Developers:**
 1. **Clone this repository**
    ```bash
-   git clone https://github.com/yourusername/phantom-protocol.git
+   git clone https://github.com/02142025/phantom-protocol.git
    cd phantom-protocol
    ```
 
@@ -174,7 +174,7 @@ These skills translate directly to **high-value tech careers** in IoT, blockchai
 ## 🌟 **Community & Support**
 
 ### **Official Channels:**
-- **Website**: [phantom-protocol.github.io](https://yourusername.github.io/phantom-protocol)
+- **Website**: [phantom-protocol.github.io](https://02142025.github.io/phantom-protocol)
 - **Discord**: [Join the Liberation Army](https://discord.gg/phantom-protocol)
 - **Telegram**: [@PhantomProtocol](https://t.me/phantom-protocol)
 - **Twitter**: [@PhantomProtocol](https://twitter.com/phantom-protocol)
