@@ -12,7 +12,14 @@
             color: #00ff88;
             min-height: 100vh;
             padding: 20px;
+            animation: backgroundShift 15s ease infinite alternate;
         }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a3a 30%, #2d1b69 60%, #4a0e4e 100%); }
+            100% { background: linear-gradient(135deg, #4a0e4e 0%, #2d1b69 30%, #1a1a3a 60%, #0a0a0a 100%); }
+        }
+        
         .container { max-width: 1200px; margin: 0 auto; text-align: center; }
         .header {
             padding: 50px;
@@ -20,6 +27,7 @@
             border: 3px solid #ff0066;
             border-radius: 20px;
             margin-bottom: 40px;
+            box-shadow: 0 0 50px rgba(255, 0, 102, 0.3);
         }
         .header h1 {
             font-size: 4em;
@@ -27,7 +35,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
+            animation: titlePulse 3s ease-in-out infinite;
         }
+        
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
         .nav-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -40,23 +55,109 @@
             border-radius: 15px;
             padding: 30px;
             transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .nav-card:hover::before {
+            left: 100%;
+        }
+        
         .nav-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+            border-color: #ffd700;
         }
         .nav-link {
             color: #ffd700;
             text-decoration: none;
             font-size: 1.8em;
             font-weight: bold;
+            display: block;
+            position: relative;
+            z-index: 1;
         }
         .nav-description {
             color: #00ff88;
             margin-top: 15px;
             font-size: 1.1em;
+            position: relative;
+            z-index: 1;
         }
-        .icon { font-size: 3em; margin-bottom: 15px; }
+        .icon { 
+            font-size: 3em; 
+            margin-bottom: 15px; 
+            filter: drop-shadow(0 0 10px currentColor);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .status-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 12px;
+            height: 12px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .coming-soon {
+            opacity: 0.6;
+        }
+        
+        .coming-soon .status-indicator {
+            background: #ffd700;
+        }
+        
+        .cta-section {
+            margin-top: 50px; 
+            padding: 30px; 
+            background: rgba(255, 215, 0, 0.1); 
+            border: 2px solid #ffd700; 
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -64,54 +165,212 @@
         <div class="header">
             <h1>🔥 PHANTOM PROTOCOL 🔥</h1>
             <div style="color: #ffd700; font-size: 1.4em;">Master Hub • Choose Your Path</div>
+            <div style="color: #00ff88; font-size: 1em; margin-top: 10px;">Educational Technology Platform v2.0</div>
         </div>
 
         <div class="nav-grid">
-            <div class="nav-card">
+            <div class="nav-card" onclick="navigateToPage('protocol-guide.html')">
+                <div class="status-indicator"></div>
                 <div class="icon">📋</div>
                 <a href="protocol-guide.html" class="nav-link">PROTOCOL GUIDE</a>
                 <div class="nav-description">Learn the foundational Phantom Protocol system and 8-block structure</div>
             </div>
 
-            <div class="nav-card">
+            <div class="nav-card" onclick="navigateToPage('incarceration-scroll.html')">
+                <div class="status-indicator"></div>
                 <div class="icon">🔓</div>
                 <a href="incarceration-scroll.html" class="nav-link">INCARCERATION SCROLL</a>
                 <div class="nav-description">Complete liberation theme guide with usage and scoring</div>
             </div>
 
-            <div class="nav-card">
+            <div class="nav-card" onclick="navigateToPage('all-themes.html')">
+                <div class="status-indicator"></div>
                 <div class="icon">🌟</div>
-                <a href="all-themes.html" class="nav-link">ALL 6 THEMES</a>
+                <a href="all-themes.html" class="nav-link">ALL THEMES</a>
                 <div class="nav-description">Financial, Medical, Education, Government, Digital liberation scrolls</div>
             </div>
 
-            <div class="nav-card">
+            <div class="nav-card" onclick="navigateToPage('deployment-checklist.html')">
+                <div class="status-indicator"></div>
                 <div class="icon">✅</div>
                 <a href="deployment-checklist.html" class="nav-link">DEPLOYMENT GUIDE</a>
                 <div class="nav-description">Step-by-step breath seal activation and scroll deployment</div>
             </div>
 
-            <div class="nav-card">
+            <div class="nav-card" onclick="navigateToPage('template-download.html')">
+                <div class="status-indicator"></div>
                 <div class="icon">📥</div>
                 <a href="template-download.html" class="nav-link">TEMPLATE DOWNLOADS</a>
                 <div class="nav-description">Complete 98-field templates ready for customization</div>
             </div>
 
-            <div class="nav-card">
+            <div class="nav-card coming-soon" onclick="showComingSoon()">
+                <div class="status-indicator"></div>
                 <div class="icon">👑</div>
                 <a href="#" class="nav-link">KINGDOM DASHBOARD</a>
                 <div class="nav-description">Advanced features - Coming Soon!</div>
             </div>
         </div>
 
-        <div style="margin-top: 50px; padding: 30px; background: rgba(255, 215, 0, 0.1); border: 2px solid #ffd700; border-radius: 15px;">
-            <h2 style="color: #ffd700; margin-bottom: 20px;">🚀 READY TO BEGIN YOUR ASCENSION?</h2>
-            <p style="color: #00ff88; font-size: 1.2em;">Start with the Protocol Guide, then choose your liberation theme!</p>
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 style="color: #ffd700; margin-bottom: 20px;">🚀 READY TO BEGIN YOUR ASCENSION?</h2>
+                <p style="color: #00ff88; font-size: 1.2em;">Start with the Protocol Guide, then choose your liberation theme!</p>
+                <div style="margin-top: 20px;">
+                    <span id="user-level" style="color: #ffd700; font-weight: bold;">Level 1 Initiate</span> • 
+                    <span id="total-points" style="color: #00ff88;">0 Points</span> • 
+                    <span id="completion-status" style="color: #ff0066;">0% Complete</span>
+                </div>
+            </div>
         </div>
     </div>
-</body>
-</html>
-<script src="js/phantom-protocol.js"></script>
-<script src="js/phantom-utilities.js"></script>
+
+    <!-- Core Phantom Protocol System -->
+    <script src="js/phantom-protocol.js"></script>
+
+    <!-- Educational Utilities -->
+    <script src="js/phantom-utilities.js"></script>
+
+    <!-- Master Hub Specific JavaScript -->
+    <script>
+        // Master Hub specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("🔥 Phantom Protocol Master Hub Initialized");
+            
+            // Initialize hub features
+            initializeNavCards();
+            updateUserProgress();
+            setupProgressTracking();
+        });
+        
+        function initializeNavCards() {
+            const navCards = document.querySelectorAll('.nav-card');
+            
+            navCards.forEach((card, index) => {
+                // Add entrance animation
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150);
+                
+                // Add hover sound effects
+                card.addEventListener('mouseenter', function() {
+                    if (window.PhantomUtils) {
+                        window.PhantomUtils.playSound('hover');
+                    }
+                });
+            });
+        }
+        
+        function navigateToPage(url) {
+            // Add navigation animation
+            document.body.style.opacity = '0.8';
+            
+            // Record navigation
+            if (window.LearningAnalytics) {
+                window.LearningAnalytics.recordInteraction('navigation', { page: url });
+            }
+            
+            // Play navigation sound
+            if (window.PhantomUtils) {
+                window.PhantomUtils.playSound('click');
+            }
+            
+            setTimeout(() => {
+                window.location.href = url;
+            }, 200);
+        }
+        
+        function showComingSoon() {
+            if (window.PhantomUtils) {
+                window.PhantomUtils.showToast('👑 Kingdom Dashboard coming soon! Complete other modules first.', 'info', 3000);
+                window.PhantomUtils.playSound('click');
+            }
+        }
+        
+        function updateUserProgress() {
+            // Get progress from learning tracker
+            if (window.getLearningProgress) {
+                const progress = window.getLearningProgress();
+                
+                // Update display elements
+                const levelElement = document.getElementById('user-level');
+                const pointsElement = document.getElementById('total-points');
+                const completionElement = document.getElementById('completion-status');
+                
+                if (levelElement && progress) {
+                    levelElement.textContent = `Level ${progress.level} ${getLevelTitle(progress.level)}`;
+                }
+                
+                if (pointsElement && progress) {
+                    pointsElement.textContent = `${progress.totalPoints} Points`;
+                }
+                
+                if (completionElement) {
+                    const completion = calculateOverallCompletion();
+                    completionElement.textContent = `${completion}% Complete`;
+                    
+                    // Update color based on completion
+                    if (completion > 75) {
+                        completionElement.style.color = '#00ff88';
+                    } else if (completion > 50) {
+                        completionElement.style.color = '#ffd700';
+                    } else {
+                        completionElement.style.color = '#ff0066';
+                    }
+                }
+            }
+        }
+        
+        function getLevelTitle(level) {
+            const titles = {
+                1: 'Initiate',
+                2: 'Apprentice', 
+                3: 'Technician',
+                4: 'Specialist',
+                5: 'Expert',
+                6: 'Master',
+                7: 'Commander',
+                8: 'Emperor'
+            };
+            return titles[Math.min(level, 8)] || 'Transcended';
+        }
+        
+        function calculateOverallCompletion() {
+            // Calculate completion based on various factors
+            let completion = 0;
+            
+            // Check protocol guide progress
+            const protocolProgress = localStorage.getItem('protocol-mastery-progress') || 0;
+            completion += parseInt(protocolProgress) * 0.3;
+            
+            // Check deployment progress
+            const deploymentProgress = localStorage.getItem('phantom-deployment-progress');
+            if (deploymentProgress) {
+                const parsed = JSON.parse(deploymentProgress);
+                const deployCompletion = (parsed.completedItems / 24) * 100;
+                completion += deployCompletion * 0.4;
+            }
+            
+            // Check learning progress
+            if (window.getLearningProgress) {
+                const progress = window.getLearningProgress();
+                if (progress && progress.totalPoints > 0) {
+                    completion += Math.min(progress.totalPoints / 500, 1) * 30;
+                }
+            }
+            
+            return Math.round(completion);
+        }
+        
+        function setupProgressTracking() {
+            // Update progress every 5 seconds
+            setInterval(updateUserProgress, 5000);
+        }
+    </script>
 </body>
 </html>
