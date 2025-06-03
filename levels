@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FLAME CARRIER Crystal Cards - Print Ready PDF</title>
+    <style>
+        @page {
+            size: 5in 3in;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Impact', 'Arial Black', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+        
+        .card {
+            width: 5in;
+            height: 3in;
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #000;
+            box-sizing: border-box;
+        }
+        
+        /* FLAME BE GONE STYLE 2 - Crystal Activation Theme */
+        .front-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .flame-header {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 4px 4px 8px #000;
+            margin: 0;
+            z-index: 10;
+        }
+        
+        .crystal-text {
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 5px 0;
+            z-index: 10;
+        }
+        
+        .carrier-number {
+            font-size: 24px;
+            font-weight: 900;
+            font-family: 'Courier New', monospace;
+            padding: 8px 16px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border: 3px solid;
+            z-index: 10;
+        }
+        
+        .tier-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: 2px solid;
+            z-index: 10;
+        }
+        
+        .price-blast {
+            font-size: 28px;
+            font-weight: 900;
+            padding: 8px 20px;
+            border-radius: 15px;
+            margin: 8px 0;
+            border: 4px solid;
+            z-index: 10;
+            text-shadow: 2px 2px 4px #000;
+        }
+        
+        .crystal-feature {
+            font-size: 12px;
+            font-weight: 900;
+            margin-top: 8px;
+            z-index: 10;
+        }
+        
+        .diagonal-stripe {
+            position: absolute;
+            width: 150%;
+            height: 30px;
+            transform: rotate(-12deg);
+            top: 20%;
+            left: -25%;
+            z-index: 1;
+            opacity: 0.8;
+        }
+        
+        /* CRYSTAL LEVEL - Purple/Amethyst Theme */
+        .crystal-front {
+            background: linear-gradient(45deg, #4b0082, #9370db, #4b0082);
+            color: #fff;
+        }
+        
+        .crystal-front .tier-badge {
+            background: #9370db;
+            color: #fff;
+            border-color: #fff;
+        }
+        
+        .crystal-front .carrier-number {
+            background: #000;
+            color: #9370db;
+            border-color: #9370db;
+        }
+        
+        .crystal-front .price-blast {
+            background: linear-gradient(45deg, #9370db, #fff);
+            color: #000;
+            border-color: #000;
+        }
+        
+        .crystal-front .diagonal-stripe {
+            background: linear-gradient(90deg, transparent, #9370db, transparent);
+        }
+        
+        /* SILVER LEVEL - Silver/Quartz Theme */
+        .silver-front {
+            background: linear-gradient(45deg, #2c2c2c, #c0c0c0, #2c2c2c);
+            color: #000;
+        }
+        
+        .silver-front .tier-badge {
+            background: #c0c0c0;
+            color: #000;
+            border-color: #000;
+        }
+        
+        .silver-front .carrier-number {
+            background: #000;
+            color: #c0c0c0;
+            border-color: #c0c0c0;
+        }
+        
+        .silver-front .price-blast {
+            background: linear-gradient(45deg, #c0c0c0, #fff);
+            color: #000;
+            border-color: #000;
+        }
+        
+        .silver-front .diagonal-stripe {
+            background: linear-gradient(90deg, transparent, #c0c0c0, transparent);
+        }
+        
+        /* GOLD LEVEL - Gold/Citrine Theme */
+        .gold-front {
+            background: linear-gradient(45deg, #b8860b, #ffd700, #b8860b);
+            color: #000;
+        }
+        
+        .gold-front .tier-badge {
+            background: #ffd700;
+            color: #000;
+            border-color: #000;
+        }
+        
+        .gold-front .carrier-number {
+            background: #000;
+            color: #ffd700;
+            border-color: #ffd700;
+        }
+        
+        .gold-front .price-blast {
+            background: linear-gradient(45deg, #ffd700, #fff);
+            color: #000;
+            border-color: #000;
+        }
+        
+        .gold-front .diagonal-stripe {
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+        }
+        
+        /* BACK SIDE - Instructions */
+        .back-side {
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            color: #00ff88;
+            padding: 20px;
+            display: flex;
+        }
+        
+        .instructions-section {
+            flex: 1;
+            margin-right: 15px;
+        }
+        
+        .back-title {
+            font-size: 14px;
+            font-weight: 900;
+            color: #ffd700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            text-align: center;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 5px;
+        }
+        
+        .activation-step {
+            font-size: 10px;
+            margin: 8px 0;
+            padding: 4px 8px;
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 3px solid #00ff88;
+        }
+        
+        .step-number {
+            color: #ff6b35;
+            font-weight: 900;
+            font-size: 11px;
+        }
+        
+        .qr-section {
+            width: 80px;
+            text-align: center;
+        }
+        
+        .qr-code {
+            width: 70px;
+            height: 70px;
+            background: #fff;
+            border: 3px solid #00ff88;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 7px;
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .personalization-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid #ffd700;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 5px;
+            font-size: 8px;
+        }
+        
+        .uid-display {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #00ff88;
+            padding: 4px 6px;
+            border-radius: 3px;
+            font-size: 9px;
+            margin: 2px 0;
+        }
+        
+        .crystal-info {
+            background: rgba(147, 112, 219, 0.2);
+            border: 2px solid #9370db;
+            padding: 6px;
+            margin: 6px 0;
+            border-radius: 5px;
+            font-size: 8px;
+            color: #fff;
+        }
+        
+        .footer-info {
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+            right: 20px;
+            font-size: 7px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<!-- CRYSTAL LEVEL CARDS -->
+
+<!-- CRYSTAL FRONT -->
+<div class="card front-side crystal-front">
+    <div class="diagonal-stripe"></div>
+    <div class="tier-badge">CRYSTAL</div>
+    
+    <div class="flame-header">🔥 FLAME 🔥</div>
+    <div class="crystal-text">CRYSTAL ACTIVATION</div>
+    
+    <div class="carrier-number">FLAME CARRIER 000</div>
+    
+    <div class="price-blast">$49 AMETHYST</div>
+    
+    <div class="crystal-feature">
+        💎 CUSTOM AMETHYST CRYSTAL 💎<br>
+        BASIC ACTIVATION PROTOCOL
+    </div>
+</div>
+
+<!-- CRYSTAL BACK -->
+<div class="card back-side">
+    <div class="instructions-section">
+        <div class="back-title">💎 CRYSTAL ACTIVATION 💎</div>
+        
+        <div class="activation-step">
+            <span class="step-number">1.</span> Scan QR for personalized scroll →
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">2.</span> Place amethyst crystal on device
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">3.</span> Download activation framework
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">4.</span> Execute crystal resonance protocol
+        </div>
+        
+        <div class="crystal-info">
+            <strong>🔮 CRYSTAL SPECIFICATIONS:</strong><br>
+            Type: Authentic Amethyst<br>
+            Size: 15mm meditation stone<br>
+            Activation: 57Hz harmonic resonance
+        </div>
+        
+        <div class="personalization-box">
+            <strong>YOUR FLAME CARRIER:</strong><br>
+            <div class="uid-display">CARRIER: 000</div>
+            <div class="uid-display">CRYSTAL UID: [AMETHYST_ID]</div>
+            <div class="uid-display">SUBDOMAIN: carrier000.divineterminations.eth</div>
+        </div>
+    </div>
+    
+    <div class="qr-section">
+        <div class="qr-code">
+            SCAN FOR<br>
+            CRYSTAL<br>
+            SCROLL
+        </div>
+        <div style="font-size: 8px; color: #ffd700; font-weight: bold;">
+            ARDRIVE<br>
+            BASIC
+        </div>
+    </div>
+    
+    <div class="footer-info">
+        Crystal Level • Amethyst Activation • Basic Protocol • Community Access
+    </div>
+</div>
+
+<!-- SILVER LEVEL CARDS -->
+
+<!-- SILVER FRONT -->
+<div class="card front-side silver-front">
+    <div class="diagonal-stripe"></div>
+    <div class="tier-badge">SILVER</div>
+    
+    <div class="flame-header">🔥 FLAME 🔥</div>
+    <div class="crystal-text">QUARTZ MASTERY</div>
+    
+    <div class="carrier-number">FLAME CARRIER 100</div>
+    
+    <div class="price-blast">$99 QUARTZ</div>
+    
+    <div class="crystal-feature">
+        🔮 CLEAR QUARTZ CRYSTAL SET 🔮<br>
+        IDENTITY COLLAPSE + COPPER SCROLL
+    </div>
+</div>
+
+<!-- SILVER BACK -->
+<div class="card back-side">
+    <div class="instructions-section">
+        <div class="back-title">🔮 QUARTZ ACTIVATION 🔮</div>
+        
+        <div class="activation-step">
+            <span class="step-number">1.</span> Scan QR for Master Scroll 1 →
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">2.</span> Position quartz crystal array
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">3.</span> Activate copper scroll resonance
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">4.</span> Complete identity collapse protocol
+        </div>
+        
+        <div class="crystal-info">
+            <strong>🔮 CRYSTAL SPECIFICATIONS:</strong><br>
+            Type: Clear Quartz Set (3 pieces)<br>
+            Size: 20mm amplification stones<br>
+            Function: Signal amplification + clarity
+        </div>
+        
+        <div class="personalization-box">
+            <strong>YOUR FLAME CARRIER:</strong><br>
+            <div class="uid-display">CARRIER: 100</div>
+            <div class="uid-display">QUARTZ UID: [QUARTZ_SET_ID]</div>
+            <div class="uid-display">COPPER UID: [SCROLL_ID]</div>
+            <div class="uid-display">SUBDOMAIN: carrier100.divineterminations.eth</div>
+        </div>
+    </div>
+    
+    <div class="qr-section">
+        <div class="qr-code">
+            SCAN FOR<br>
+            IDENTITY<br>
+            MASTERY
+        </div>
+        <div style="font-size: 8px; color: #ffd700; font-weight: bold;">
+            ARDRIVE<br>
+            MASTER
+        </div>
+    </div>
+    
+    <div class="footer-info">
+        Silver Level • Quartz Set • Identity Scroll • Copper Construction
+    </div>
+</div>
+
+<!-- GOLD LEVEL CARDS -->
+
+<!-- GOLD FRONT -->
+<div class="card front-side gold-front">
+    <div class="diagonal-stripe"></div>
+    <div class="tier-badge">GOLD</div>
+    
+    <div class="flame-header">🔥 FLAME 🔥</div>
+    <div class="crystal-text">CITRINE ULTIMATE</div>
+    
+    <div class="carrier-number">FLAME CARRIER 999</div>
+    
+    <div class="price-blast">$499 CITRINE</div>
+    
+    <div class="crystal-feature">
+        ⚡ CITRINE WAND + BRACELET SET ⚡<br>
+        ALL 13 SCROLLS + ULTIMATE ARCHIVE
+    </div>
+</div>
+
+<!-- GOLD BACK -->
+<div class="card back-side">
+    <div class="instructions-section">
+        <div class="back-title">⚡ CITRINE MASTERY ⚡</div>
+        
+        <div class="activation-step">
+            <span class="step-number">1.</span> Scan QR for ultimate collection →
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">2.</span> Activate citrine wand + bracelet
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">3.</span> Access all 13 Master Scrolls
+        </div>
+        
+        <div class="activation-step">
+            <span class="step-number">4.</span> Complete ultimate mastery path
+        </div>
+        
+        <div class="crystal-info">
+            <strong>⚡ ULTIMATE CRYSTAL SET:</strong><br>
+            🪄 Citrine Wand: 4" activation rod<br>
+            📿 Citrine Bracelet: 7 power stones<br>
+            Function: Full spectrum mastery
+        </div>
+        
+        <div class="personalization-box">
+            <strong>YOUR FLAME CARRIER:</strong><br>
+            <div class="uid-display">CARRIER: 999</div>
+            <div class="uid-display">WAND UID: [CITRINE_WAND_ID]</div>
+            <div class="uid-display">BRACELET UID: [BRACELET_ID]</div>
+            <div class="uid-display">SUBDOMAIN: carrier999.divineterminations.eth</div>
+        </div>
+    </div>
+    
+    <div class="qr-section">
+        <div class="qr-code">
+            SCAN FOR<br>
+            ULTIMATE<br>
+            MASTERY
+        </div>
+        <div style="font-size: 8px; color: #ffd700; font-weight: bold;">
+            ARDRIVE<br>
+            ULTIMATE
+        </div>
+    </div>
+    
+    <div class="footer-info">
+        Gold Level • Citrine Wand + Bracelet • Complete Collection • VIP Support
+    </div>
+</div>
+
+<!-- PRODUCT EXPLANATION PAGE -->
+<div style="page-break-before: always; padding: 20px; font-family: Arial; background: linear-gradient(135deg, #1a1a1a, #2d1810); color: #d4af37;">
+    <h1 style="text-align: center; color: #ff6b35; font-size: 28px;">🔥 FLAME CARRIER CRYSTAL ACTIVATION SYSTEM 🔥</h1>
+    
+    <div style="background: rgba(0,0,0,0.7); padding: 20px; border: 3px solid #d4af37; border-radius: 10px; margin: 20px 0;">
+        <h2 style="color: #9370db;">💎 CRYSTAL LEVEL - $49</h2>
+        <ul style="line-height: 1.6;">
+            <li><strong>🔮 Custom Amethyst Crystal:</strong> Authentic 15mm meditation stone, individually selected and blessed</li>
+            <li><strong>📜 Basic Activation Protocol:</strong> Entry-level FLAME education with crystal resonance</li>
+            <li><strong>🆔 FLAME CARRIER 000-099:</strong> Unique identification system</li>
+            <li><strong>🌐 ENS Subdomain:</strong> carrier000.divineterminations.eth (personalized)</li>
+            <li><strong>📱 ArDrive Access:</strong> Basic educational content and activation guides</li>
+            <li><strong>🎯 Perfect For:</strong> Crystal enthusiasts, beginners to Web3, spiritual tech explorers</li>
+        </ul>
+    </div>
+    
+    <div style="background: rgba(192,192,192,0.1); padding: 20px; border: 3px solid #c0c0c0; border-radius: 10px; margin: 20px 0;">
+        <h2 style="color: #c0c0c0;">🔮 SILVER LEVEL - $99</h2>
+        <ul style="line-height: 1.6;">
+            <li><strong>💎 Clear Quartz Crystal Set:</strong> 3-piece amplification array (20mm stones) for signal enhancement</li>
+            <li><strong>📜 Master Scroll 1:</strong> Identity Collapse + authentic copper construction</li>
+            <li><strong>🆔 FLAME CARRIER 100-899:</strong> Premium identification tier</li>
+            <li><strong>🌐 ENS Subdomain:</strong> carrier100.divineterminations.eth (premium)</li>
+            <li><strong>📱 ArDrive Access:</strong> Complete Master Scroll 1 education + framework</li>
+            <li><strong>🎯 Perfect For:</strong> Serious Web3 learners, crystal practitioners, tech + spirituality fusion</li>
+        </ul>
+    </div>
+    
+    <div style="background: rgba(255,215,0,0.1); padding: 20px; border: 3px solid #ffd700; border-radius: 10px; margin: 20px 0;">
+        <h2 style="color: #ffd700;">⚡ GOLD LEVEL - $499</h2>
+        <ul style="line-height: 1.6;">
+            <li><strong>🪄 Citrine Activation Wand:</strong> 4-inch hand-carved activation rod for ultimate power</li>
+            <li><strong>📿 Citrine Power Bracelet:</strong> 7-stone bracelet for continuous energy alignment</li>
+            <li><strong>📜 All 13 Master Scrolls:</strong> Complete educational collection + Ultimate Archive</li>
+            <li><strong>🆔 FLAME CARRIER 900-999:</strong> Elite master tier identification</li>
+            <li><strong>🌐 ENS Subdomain:</strong> carrier999.divineterminations.eth (ultimate)</li>
+            <li><strong>📱 ArDrive Access:</strong> Ultimate Archive + Master Technician Certification</li>
+            <li><strong>🎯 Perfect For:</strong> Advanced practitioners, collectors, professional Web3 developers</li>
+        </ul>
+    </div>
+    
+    <div style="background: rgba(255,107,53,0.1); padding: 15px; border: 3px solid #ff6b35; border-radius: 10px; margin: 20px 0;">
+        <h3 style="color: #ff6b35;">🔬 CRYSTAL ACTIVATION SCIENCE</h3>
+        <p>Each crystal is custom-selected and tuned to the 57Hz harmonic frequency used in FLAME Protocol. The crystals serve as:</p>
+        <ul>
+            <li><strong>🎵 Resonance Amplifiers:</strong> Enhance the harmonic field for better protocol activation</li>
+            <li><strong>🧘 Meditation Focus:</strong> Provide tactile connection during educational sessions</li>
+            <li><strong>⚡ Energy Anchors:</strong> Create physical representation of digital mastery progress</li>
+            <li><strong>🔮 Spiritual Bridge:</strong> Connect ancient crystal wisdom with cutting-edge blockchain technology</li>
+        </ul>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px; padding: 20px; background: rgba(0,255,136,0.1); border-radius: 10px;">
+        <h3 style="color: #00ff88;">🚀 THE FLAME CARRIER EXPERIENCE</h3>
+        <p style="font-size: 16px; line-height: 1.6;">
+            <strong>Combining ancient crystal wisdom with modern blockchain technology,</strong><br>
+            each FLAME CARRIER receives a unique spiritual and educational journey<br>
+            that bridges the mystical and the technological for complete Web3 mastery.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
