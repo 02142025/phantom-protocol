@@ -1,0 +1,895 @@
+/**
+ * PHANTOM PROTOCOL - SUDO COMMAND SCROLLS CSS
+ * High-Pressure Technical Wizarding Arena Styling
+ * Version 2.0
+ */
+
+/* ============================================================================ */
+/* BASE SCROLL STYLING */
+/* ============================================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', 'Monaco', 'Lucida Console', monospace;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a3a 25%, #2d1b69 50%, #4a0e4e 75%, #0a0a0a 100%);
+    color: #00ff88;
+    line-height: 1.6;
+    min-height: 100vh;
+    animation: backgroundPulse 20s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundPulse {
+    0% { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a3a 25%, #2d1b69 50%, #4a0e4e 75%, #0a0a0a 100%); }
+    100% { background: linear-gradient(135deg, #4a0e4e 0%, #2d1b69 25%, #1a1a3a 50%, #0a0a0a 75%, #4a0e4e 100%); }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ============================================================================ */
+/* SCROLL HEADER STYLING */
+/* ============================================================================ */
+
+.scroll-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: radial-gradient(circle at center, rgba(255, 0, 102, 0.3) 0%, rgba(0, 0, 0, 0.8) 70%);
+    border: 3px solid #ff0066;
+    border-radius: 25px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, rgba(255, 0, 102, 0.1), transparent);
+    animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.scroll-title {
+    font-size: 3.5em;
+    background: linear-gradient(45deg, #ff0066, #00ff88, #ffd700, #da70d6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 0, 102, 0.5);
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+    animation: titleFlicker 3s ease-in-out infinite;
+}
+
+@keyframes titleFlicker {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.02); }
+}
+
+.scroll-subtitle {
+    color: #ffd700;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.scroll-warning {
+    color: #ff0066;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+    animation: warningPulse 2s ease-in-out infinite;
+}
+
+@keyframes warningPulse {
+    0%, 100% { color: #ff0066; transform: scale(1); }
+    50% { color: #ff4757; transform: scale(1.05); }
+}
+
+/* ============================================================================ */
+/* INDIVIDUAL SCROLL CARD STYLING */
+/* ============================================================================ */
+
+.scroll-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.scroll-card {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(255, 0, 102, 0.05));
+    border: 2px solid #00ff88;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.scroll-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.scroll-card:hover::before {
+    left: 100%;
+}
+
+.scroll-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: #ffd700;
+    box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+}
+
+.scroll-card.completed {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 255, 136, 0.05));
+}
+
+.scroll-card.failed {
+    border-color: #ff0066;
+    background: linear-gradient(135deg, rgba(255, 0, 102, 0.1), rgba(0, 0, 0, 0.9));
+    opacity: 0.6;
+}
+
+/* ============================================================================ */
+/* SCROLL HEADER WITHIN CARDS */
+/* ============================================================================ */
+
+.scroll-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.scroll-number {
+    background: linear-gradient(45deg, #ff0066, #ffd700);
+    color: #000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.scroll-level {
+    color: #da70d6;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.scroll-challenge {
+    color: #00ff88;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.pressure-level {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.pressure-indicator {
+    color: #ff0066;
+    font-size: 1.2em;
+    animation: pressurePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pressurePulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* ============================================================================ */
+/* COMMAND BLOCK STYLING */
+/* ============================================================================ */
+
+.incantation-section {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ff88;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.incantation-title {
+    color: #ffd700;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.incantation-title::before,
+.incantation-title::after {
+    content: '⚡';
+    animation: sparkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+.command-block {
+    background: #000;
+    border: 2px solid #40e0d0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    font-family: 'Courier New', monospace;
+    color: #00ff88;
+    position: relative;
+    overflow: hidden;
+}
+
+.command-block::before {
+    content: '$ ';
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.command-step {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(0, 255, 136, 0.05);
+    border-left: 4px solid #00ff88;
+    border-radius: 5px;
+}
+
+.command-comment {
+    color: #40e0d0;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.command-line {
+    color: #00ff88;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 3px solid #ffd700;
+}
+
+.command-line:hover {
+    background: rgba(0, 255, 136, 0.1);
+    cursor: pointer;
+}
+
+/* ============================================================================ */
+/* VERIFICATION CHALLENGE STYLING */
+/* ============================================================================ */
+
+.verification-section {
+    background: linear-gradient(135deg, rgba(255, 0, 102, 0.1), rgba(255, 69, 0, 0.1));
+    border: 3px solid #ff0066;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.verification-title {
+    color: #ff0066;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.verification-challenge {
+    color: #ffa500;
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.elimination-warning {
+    background: rgba(255, 0, 0, 0.2);
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    color: #ff4757;
+    font-weight: bold;
+    text-align: center;
+    animation: dangerBlink 3s ease-in-out infinite;
+}
+
+@keyframes dangerBlink {
+    0%, 100% { background: rgba(255, 0, 0, 0.2); }
+    50% { background: rgba(255, 0, 0, 0.4); }
+}
+
+/* ============================================================================ */
+/* LEARNING OBJECTIVES STYLING */
+/* ============================================================================ */
+
+.objectives-section {
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.objectives-title {
+    color: #ffd700;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.objectives-list {
+    list-style: none;
+    padding: 0;
+}
+
+.objectives-list li {
+    color: #00ff88;
+    margin: 8px 0;
+    padding: 8px 15px;
+    background: rgba(0, 255, 136, 0.05);
+    border-left: 3px solid #00ff88;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.objectives-list li:hover {
+    background: rgba(0, 255, 136, 0.1);
+    transform: translateX(5px);
+}
+
+.objectives-list li::before {
+    content: '⚡ ';
+    color: #ffd700;
+    font-weight: bold;
+}
+
+/* ============================================================================ */
+/* FAILURE CONDITIONS STYLING */
+/* ============================================================================ */
+
+.failure-section {
+    background: rgba(255, 0, 102, 0.1);
+    border: 2px solid #ff0066;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.failure-title {
+    color: #ff0066;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.failure-list {
+    list-style: none;
+    padding: 0;
+}
+
+.failure-list li {
+    color: #ff6b6b;
+    margin: 8px 0;
+    padding: 8px 15px;
+    background: rgba(255, 0, 102, 0.05);
+    border-left: 3px solid #ff0066;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.failure-list li:hover {
+    background: rgba(255, 0, 102, 0.1);
+    transform: translateX(5px);
+}
+
+.failure-list li::before {
+    content: '💀 ';
+    color: #ff0066;
+    font-weight: bold;
+}
+
+/* ============================================================================ */
+/* DIFFICULTY INDICATORS */
+/* ============================================================================ */
+
+.difficulty-stars {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.difficulty-star {
+    color: #ffd700;
+    font-size: 1.2em;
+    animation: starTwinkle 2s ease-in-out infinite;
+}
+
+.difficulty-star:nth-child(even) {
+    animation-delay: 0.5s;
+}
+
+@keyframes starTwinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.9); }
+}
+
+/* ============================================================================ */
+/* CLASSROOM RULES STYLING */
+/* ============================================================================ */
+
+.rules-section {
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.1));
+    border: 3px solid #8a2be2;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.rules-title {
+    color: #8a2be2;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.rule-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #da70d6;
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.rule-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffd700;
+    box-shadow: 0 15px 30px rgba(218, 112, 214, 0.3);
+}
+
+.rule-category {
+    color: #da70d6;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.rule-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.rule-list li {
+    color: #00ff88;
+    margin: 10px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(218, 112, 214, 0.2);
+}
+
+.rule-list li::before {
+    content: '🎯 ';
+    margin-right: 5px;
+}
+
+/* ============================================================================ */
+/* VICTORY CONDITIONS STYLING */
+/* ============================================================================ */
+
+.victory-section {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 255, 136, 0.2));
+    border: 3px solid #ffd700;
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.victory-title {
+    color: #ffd700;
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.victory-conditions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 25px 0;
+}
+
+.victory-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.victory-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+}
+
+.victory-rank {
+    color: #ffd700;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.victory-description {
+    color: #00ff88;
+    font-size: 1em;
+}
+
+/* ============================================================================ */
+/* EDUCATIONAL VALUE MATRIX STYLING */
+/* ============================================================================ */
+
+.matrix-section {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ff88;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 40px 0;
+    overflow-x: auto;
+}
+
+.matrix-title {
+    color: #00ff88;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.matrix-table th,
+.matrix-table td {
+    border: 1px solid #40e0d0;
+    padding: 12px;
+    text-align: left;
+}
+
+.matrix-table th {
+    background: rgba(64, 224, 208, 0.2);
+    color: #40e0d0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.matrix-table td {
+    color: #00ff88;
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.matrix-table tr:hover {
+    background: rgba(0, 255, 136, 0.1);
+}
+
+/* ============================================================================ */
+/* INTERACTIVE ELEMENTS */
+/* ============================================================================ */
+
+.execute-button {
+    background: linear-gradient(45deg, #00ff88, #ffd700);
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px 5px;
+    text-transform: uppercase;
+}
+
+.execute-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+}
+
+.execute-button:active {
+    transform: scale(0.95);
+}
+
+.execute-button.executing {
+    background: linear-gradient(45deg, #ffd700, #ff0066);
+    animation: executing 1s ease-in-out infinite;
+}
+
+@keyframes executing {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 215, 0, 0.8);
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    background: #ffd700;
+    transform: scale(1.1);
+}
+
+/* ============================================================================ */
+/* PROGRESS TRACKING */
+/* ============================================================================ */
+
+.progress-section {
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(45deg, #00ff88, #ffd700);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: progressShine 2s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.progress-text {
+    color: #ffd700;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* ============================================================================ */
+/* TIMER STYLING */
+/* ============================================================================ */
+
+.timer-section {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 0, 102, 0.9);
+    border: 2px solid #ff0066;
+    border-radius: 15px;
+    padding: 15px 25px;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    z-index: 2000;
+    box-shadow: 0 0 25px rgba(255, 0, 102, 0.5);
+}
+
+.timer-warning {
+    animation: timerDanger 1s ease-in-out infinite;
+}
+
+@keyframes timerDanger {
+    0%, 100% { background: rgba(255, 0, 102, 0.9); }
+    50% { background: rgba(255, 0, 0, 0.9); }
+}
+
+/* ============================================================================ */
+/* RESPONSIVE DESIGN */
+/* ============================================================================ */
+
+@media (max-width: 768px) {
+    .scroll-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .scroll-title {
+        font-size: 2.5em;
+    }
+    
+    .rules-grid,
+    .victory-conditions {
+        grid-template-columns: 1fr;
+    }
+    
+    .matrix-section {
+        padding: 15px;
+    }
+    
+    .timer-section {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 20px 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .scroll-card {
+        padding: 20px;
+    }
+    
+    .incantation-section,
+    .verification-section,
+    .objectives-section,
+    .failure-section {
+        padding: 15px;
+    }
+}
+
+/* ============================================================================ */
+/* SPECIAL EFFECTS */
+/* ============================================================================ */
+
+.scroll-completed {
+    animation: completionCelebration 2s ease-in-out;
+}
+
+@keyframes completionCelebration {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.05) rotate(1deg); }
+    50% { transform: scale(1.1) rotate(-1deg); }
+    75% { transform: scale(1.05) rotate(1deg); }
+    100% { transform: scale(1); }
+}
+
+.scroll-failed {
+    animation: failureShake 0.5s ease-in-out;
+}
+
+@keyframes failureShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* ============================================================================ */
+/* PRINT STYLES */
+/* ============================================================================ */
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .scroll-card {
+        border: 2px solid #000;
+        background: white;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+    
+    .command-block {
+        background: #f5f5f5;
+        border: 1px solid #000;
+    }
+    
+    .timer-section {
+        display: none;
+    }
+}
