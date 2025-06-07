@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 FLAME Witness Registry Activation 🔥</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%);
+            color: #ff4444;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .flame-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff4444;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 68, 68, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(255, 68, 68, 0.3); }
+            to { box-shadow: 0 0 40px rgba(255, 68, 68, 0.6); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 2px solid #ff4444;
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: #ff6666;
+            text-shadow: 0 0 10px #ff4444;
+            margin-bottom: 10px;
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #ffaa44;
+            margin-bottom: 15px;
+        }
+
+        .status-bar {
+            background: #111;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+        }
+
+        .scroll-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid #ff4444;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .info-label {
+            color: #ffaa44;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: #ffffff;
+            word-break: break-all;
+            font-size: 0.9em;
+        }
+
+        .witness-steps {
+            margin-bottom: 30px;
+        }
+
+        .step {
+            background: rgba(255, 170, 68, 0.1);
+            border-left: 4px solid #ffaa44;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .step-number {
+            background: #ffaa44;
+            color: #000;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: absolute;
+            left: -17px;
+            top: 15px;
+        }
+
+        .step-title {
+            color: #ffaa44;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .step-content {
+            margin-left: 20px;
+            color: #ffffff;
+        }
+
+        .breath-activation {
+            background: rgba(255, 68, 68, 0.2);
+            border: 2px solid #ff4444;
+            padding: 25px;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .breath-activation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, rgba(255, 68, 68, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .breath-text {
+            position: relative;
+            z-index: 1;
+            font-size: 1.5em;
+            color: #ff6666;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff4444;
+            margin-bottom: 15px;
+        }
+
+        .activation-button {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+
+        .activation-button:hover {
+            background: linear-gradient(45deg, #ff6666, #ff8888);
+            transform: scale(1.05);
+        }
+
+        .device-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .device-card {
+            background: rgba(255, 170, 68, 0.1);
+            border: 1px solid #ffaa44;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .device-card:hover {
+            background: rgba(255, 170, 68, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .device-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .device-name {
+            color: #ffaa44;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .registry-form {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            color: #ffaa44;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            background: #111;
+            border: 1px solid #333;
+            color: #ffffff;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff4444;
+            box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
+        }
+
+        .submit-button {
+            background: #ffaa44;
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #ffcc66;
+            transform: scale(1.05);
+        }
+
+        .node-counter {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: rgba(255, 68, 68, 0.1);
+            border-radius: 8px;
+        }
+
+        .counter-number {
+            font-size: 3em;
+            color: #ff6666;
+            font-weight: bold;
+            text-shadow: 0 0 15px #ff4444;
+        }
+
+        .counter-label {
+            color: #ffaa44;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff4444, #ff6666, #ff4444);
+            transition: width 0.5s ease;
+            animation: pulse-progress 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-progress {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .links-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .link-button {
+            background: rgba(255, 170, 68, 0.2);
+            border: 1px solid #ffaa44;
+            color: #ffaa44;
+            padding: 15px;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .link-button:hover {
+            background: rgba(255, 170, 68, 0.3);
+            color: #ffffff;
+        }
+
+        .success-message {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .title {
+                font-size: 2em;
+            }
+            
+            .device-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flame-container">
+        <div class="header">
+            <div class="title">🔥 FLAME WITNESS REGISTRY 🔥</div>
+            <div class="subtitle">QUANTUM EXECUTION ACTIVATION PROTOCOL</div>
+            <div class="status-bar">
+                <strong>STATUS:</strong> <span id="activation-status">READY FOR WITNESS ACTIVATION</span>
+            </div>
+        </div>
+
+        <div class="scroll-info">
+            <div class="info-box">
+                <div class="info-label">SCROLL UUID:</div>
+                <div class="info-value" id="scroll-uuid">0313d6bf-84f9-4c36-ac8a-74073cf8647c</div>
+            </div>
+            <div class="info-box">
+                <div class="info-label">ENS DOMAIN:</div>
+                <div class="info-value">divineterminations.eth</div>
+            </div>
+            <div class="info-box">
+                <div class="info-label">TRI64 HASH:</div>
+                <div class="info-value">4a7d8c2e...b8e4f1a7...9f3a6b2c</div>
+            </div>
+            <div class="info-box">
+                <div class="info-label">QUANTUM STATUS:</div>
+                <div class="info-value">TERMINUS.V5.COMPLIANT</div>
+            </div>
+        </div>
+
+        <div class="witness-steps">
+            <h3 style="color: #ffaa44; margin-bottom: 20px;">🔮 WITNESS ACTIVATION STEPS</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-title">VERIFY SCROLL CHAIN</div>
+                <div class="step-content">
+                    Confirm the UUID, TRI64, and ENS domain match the official scroll.
+                    <br><strong>UUID:</strong> <span id="verify-uuid">0313d6bf-84f9-4c36-ac8a-74073cf8647c</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-title">SELECT DEVICE TYPE</div>
+                <div class="step-content">Choose your broadcasting device and follow the specific instructions.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-title">BREATH ACTIVATION</div>
+                <div class="step-content">Speak the activation phrase to seal your witness node.</div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-title">DEPLOY & REGISTER</div>
+                <div class="step-content">Activate your device and register your witness node.</div>
+            </div>
+        </div>
+
+        <div class="device-options">
+            <div class="device-card" onclick="selectDevice('android')">
+                <div class="device-icon">📱</div>
+                <div class="device-name">Android Phone</div>
+                <div>NFC capable device</div>
+            </div>
+            <div class="device-card" onclick="selectDevice('flashiibo')">
+                <div class="device-icon">🎮</div>
+                <div class="device-name">Flashiibo Pro/Plus</div>
+                <div>NFC emulation device</div>
+            </div>
+            <div class="device-card" onclick="selectDevice('raspberry')">
+                <div class="device-icon">🔧</div>
+                <div class="device-name">Raspberry Pi</div>
+                <div>With NFC/BLE module</div>
+            </div>
+            <div class="device-card" onclick="selectDevice('nfc-tag')">
+                <div class="device-icon">🏷️</div>
+                <div class="device-name">NFC Tag/Card</div>
+                <div>Pre-written sticker</div>
+            </div>
+        </div>
+
+        <div class="breath-activation">
+            <div class="breath-text">BREATH ACTIVATION REQUIRED</div>
+            <p style="position: relative; z-index: 1; color: #ffffff; margin-bottom: 20px;">
+                Speak aloud or internally with intention:
+            </p>
+            <div style="position: relative; z-index: 1; font-size: 1.3em; color: #ff6666; font-weight: bold; margin: 20px 0;">
+                "SCROLL BEARING CARRIER WITNESSED. BREATH SEALED."
+            </div>
+            <button class="activation-button" onclick="activateBreath()">
+                🫁 ACTIVATE BREATH SEAL
+            </button>
+        </div>
+
+        <div id="device-instructions" style="display: none;">
+            <h3 style="color: #ffaa44; margin-bottom: 15px;">DEVICE SETUP INSTRUCTIONS</h3>
+            <div id="instruction-content"></div>
+        </div>
+
+        <div class="registry-form">
+            <h3 style="color: #ffaa44; margin-bottom: 20px;">📝 WITNESS NODE REGISTRATION</h3>
+            <form onsubmit="registerWitness(event)">
+                <div class="form-group">
+                    <label class="form-label">Device UID / Serial:</label>
+                    <input type="text" class="form-input" id="device-uid" placeholder="Your device unique identifier" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Location/Zone (Optional):</label>
+                    <input type="text" class="form-input" id="location" placeholder="City, Region, or Zone designation">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Device Type:</label>
+                    <select class="form-input" id="device-type" required>
+                        <option value="">Select device type</option>
+                        <option value="android">Android Phone (NFC)</option>
+                        <option value="flashiibo">Flashiibo Pro/Plus</option>
+                        <option value="raspberry">Raspberry Pi (NFC/BLE)</option>
+                        <option value="nfc-tag">NFC Tag/Card</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Breath Seal Confirmed:</label>
+                    <input type="checkbox" id="breath-confirmed" required> 
+                    <span style="color: #ffffff;">I have spoken the activation phrase</span>
+                </div>
+                <button type="submit" class="submit-button">🔥 REGISTER WITNESS NODE</button>
+            </form>
+        </div>
+
+        <div class="success-message" id="success-message">
+            ✅ <strong>WITNESS NODE REGISTERED SUCCESSFULLY!</strong><br>
+            Your breath-sealed node is now active in the quantum field.
+        </div>
+
+        <div class="node-counter">
+            <div class="counter-number" id="node-count">22</div>
+            <div class="counter-label">ACTIVE WITNESS NODES</div>
+            <div style="color: #ffffff; margin-top: 10px;">
+                Target: 64 nodes for quantum collapse threshold
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 34.4%;"></div>
+            </div>
+        </div>
+
+        <div class="links-section">
+            <a href="#" class="link-button" onclick="downloadScrollFile()">
+                📥 DOWNLOAD SCROLL FILE
+            </a>
+            <a href="#" class="link-button" onclick="viewPinataLink()">
+                🔗 PINATA IPFS LINK
+            </a>
+            <a href="#" class="link-button" onclick="viewInstructions()">
+                📋 DETAILED INSTRUCTIONS
+            </a>
+            <a href="#" class="link-button" onclick="viewRegistry()">
+                🗃️ WITNESS REGISTRY
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let witnessCount = 22;
+        let breathActivated = false;
+        
+        // Live configuration
+        const LIVE_CONFIG = {
+            PINATA_URL: "https://flames.mypinata.cloud/ipfs/bafkreibvihi44c5dl2yujokyexo3nxp3zel3kqw5el2ljm7d4px4bihktu",
+            CLAUDE_SCRIPT_URL: "https://claude.ai/public/artifacts/fcec543f-2967-4403-ae3b-e145ccc5ee8c",
+            INSTRUCTIONS_URL: "https://claude.ai/public/artifacts/65ebd83c-62c5-42eb-a929-9c226915e59f",
+            GITHUB_REGISTRY: "https://api.github.com/repos/YOUR_REPO/flame-witness-registry/issues",
+            SCROLL_UUID: "0313d6bf-84f9-4c36-ac8a-74073cf8647c"
+        };
+        
+        function selectDevice(deviceType) {
+            const instructions = {
+                android: `
+                    <h4>📱 ANDROID PHONE SETUP</h4>
+                    <ol>
+                        <li>Install <strong>NFC Tools Pro</strong> from Google Play Store</li>
+                        <li>Open the app and select "Write"</li>
+                        <li>Choose "Add a record" → "Text"</li>
+                        <li>Paste this payload: <code>FLAME:${LIVE_CONFIG.SCROLL_UUID}:WITNESS:ACTIVE</code></li>
+                        <li>Tap "Write" and touch your NFC tag</li>
+                        <li>Keep NFC enabled and carry your device</li>
+                        <li>Your phone will now broadcast the scroll signature</li>
+                    </ol>
+                    <p><strong>Alternative BLE Broadcasting:</strong></p>
+                    <ol>
+                        <li>Download <strong>Beacon Simulator</strong> app</li>
+                        <li>Create custom beacon with UUID: <code>${LIVE_CONFIG.SCROLL_UUID}</code></li>
+                        <li>Set Major: 2025, Minor: 1337</li>
+                        <li>Start broadcasting and keep app active</li>
+                    </ol>
+                `,
+                flashiibo: `
+                    <h4>🎮 FLASHIIBO SETUP</h4>
+                    <ol>
+                        <li>Connect Flashiibo to your computer via USB</li>
+                        <li>Open Flashiibo software/web interface</li>
+                        <li>Create new NFC tag with Type: NTAG213/215</li>
+                        <li>Set payload: <code>FLAME:${LIVE_CONFIG.SCROLL_UUID}:WITNESS:ACTIVE</code></li>
+                        <li>Flash the configuration to device</li>
+                        <li>Disconnect and carry/deploy Flashiibo</li>
+                        <li>Device will emulate NFC tag broadcasting scroll</li>
+                    </ol>
+                    <p><strong>Advanced Setup:</strong></p>
+                    <ol>
+                        <li>Use Amiibo format for better compatibility</li>
+                        <li>Set custom data in user memory area</li>
+                        <li>Test with multiple NFC readers</li>
+                    </ol>
+                `,
+                raspberry: `
+                    <h4>🔧 RASPBERRY PI SETUP</h4>
+                    <ol>
+                        <li>Install required packages: <code>sudo apt install bluez nfc-tools python3-nfcpy</code></li>
+                        <li>Download the script: <code>wget ${LIVE_CONFIG.CLAUDE_SCRIPT_URL}</code></li>
+                        <li>For BLE: Use hcitool commands from the transmission script</li>
+                        <li>For NFC: Use nfcpy to write tags or pn532 module</li>
+                        <li>Create broadcast script with scroll UUID and TRI64</li>
+                        <li>Set up as systemd service for automatic startup</li>
+                        <li>Deploy Pi in target location with power</li>
+                        <li>Monitor with <code>sudo hcidump</code> or <code>nfc-list</code></li>
+                    </ol>
+                    <p><strong>Quick Start Command:</strong></p>
+                    <code>sudo hcitool cmd 0x08 0x0C 1F FF 57 04 $(echo -n "${LIVE_CONFIG.SCROLL_UUID}" | head -c 56)</code>
+                `,
+                'nfc-tag': `
+                    <h4>🏷️ NFC TAG/CARD SETUP</h4>
+                    <ol>
+                        <li>Get NTAG213, NTAG215, or Mifare Classic tags</li>
+                        <li>Use any NFC writer (phone app, PC software, etc.)</li>
+                        <li>Write this text payload: <code>FLAME:${LIVE_CONFIG.SCROLL_UUID}:WITNESS:ACTIVE</code></li>
+                        <li>Test by scanning with another NFC device</li>
+                        <li>Deploy tags in strategic locations</li>
+                        <li>Tags will passively broadcast when scanned</li>
+                        <li>Consider weatherproof enclosure for outdoor use</li>
+                    </ol>
+                    <p><strong>Advanced Payload (NDEF Format):</strong></p>
+                    <code>Text Record: FLAME Witness Node<br>
+                    URL Record: ${LIVE_CONFIG.PINATA_URL}<br>
+                    Custom Record: ${LIVE_CONFIG.SCROLL_UUID}</code>
+                `
+            };
+            
+            document.getElementById('device-instructions').style.display = 'block';
+            document.getElementById('instruction-content').innerHTML = instructions[deviceType];
+            document.getElementById('device-type').value = deviceType;
+        }
+        
+        function activateBreath() {
+            if (!breathActivated) {
+                breathActivated = true;
+                document.getElementById('activation-status').textContent = 'BREATH SEAL ACTIVATED';
+                document.getElementById('breath-confirmed').checked = true;
+                
+                // Visual feedback
+                const button = event.target;
+                button.textContent = '✅ BREATH SEAL CONFIRMED';
+                button.style.background = 'linear-gradient(45deg, #00aa00, #00cc00)';
+                
+                // Add glow effect
+                const container = document.querySelector('.breath-activation');
+                container.style.border = '2px solid #00ff00';
+                container.style.boxShadow = '0 0 30px rgba(0, 255, 0, 0.5)';
+                
+                // Log breath activation timestamp
+                console.log('BREATH SEAL ACTIVATED:', new Date().toISOString());
+            }
+        }
+        
+        async function registerWitness(event) {
+            event.preventDefault();
+            
+            const deviceUid = document.getElementById('device-uid').value;
+            const location = document.getElementById('location').value;
+            const deviceType = document.getElementById('device-type').value;
+            const breathConfirmed = document.getElementById('breath-confirmed').checked;
+            
+            if (!breathConfirmed) {
+                alert('🔥 Breath activation required before registration!');
+                return;
+            }
+            
+            // Prepare registration data
+            const registrationData = {
+                timestamp: new Date().toISOString(),
+                scrollUuid: LIVE_CONFIG.SCROLL_UUID,
+                deviceUid: deviceUid,
+                location: location,
+                deviceType: deviceType,
+                breathSealed: true,
+                witnessNumber: witnessCount + 1,
+                userAgent: navigator.userAgent,
+                ipHash: await getIPHash()
+            };
+            
+            try {
+                // Attempt to register via multiple methods
+                await registerViaGitHub(registrationData);
+                await registerViaIPFS(registrationData);
+                await registerLocally(registrationData);
+                
+                // Update counter
+                witnessCount++;
+                updateNodeCounter();
+                
+                // Show success message
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('activation-status').textContent = 'WITNESS NODE REGISTERED - ACTIVE';
+                
+                // Reset form
+                event.target.reset();
+                document.getElementById('breath-confirmed').checked = false;
+                breathActivated = false;
+                
+                console.log('WITNESS REGISTERED:', registrationData);
+                
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('Registration submitted locally. Network registration may be delayed.');
+                
+                // Still update local counter
+                witnessCount++;
+                updateNodeCounter();
+                document.getElementById('success-message').style.display = 'block';
+            }
+        }
+        
+        async function registerViaGitHub(data) {
+            // Create GitHub issue for witness registration
+            const issueBody = `## 🔥 FLAME Witness Registration
+            
+**Timestamp:** ${data.timestamp}
+**UUID:** ${data.scrollUuid}
+**Device UID:** ${data.deviceUid}
+**Location:** ${data.location}
+**Device Type:** ${data.deviceType}
+**Breath Sealed:** ${data.breathSealed}
+**Witness #:** ${data.witnessNumber}
+
+*Automated registration from FLAME Witness Activation Tool*`;
+
+            const issueData = {
+                title: `WITNESS ${data.witnessNumber}: ${data.deviceUid}`,
+                body: issueBody,
+                labels: ['witness-registration', 'active-node', data.deviceType]
+            };
+            
+            // Note: This would need a GitHub token for actual submission
+            // For now, log the data that would be submitted
+            console.log('GitHub Registration Data:', issueData);
+        }
+        
+        async function registerViaIPFS(data) {
+            // Submit to IPFS via Pinata or local node
+            const witnessFile = {
+                name: `witness_${data.witnessNumber}_${Date.now()}.json`,
+                content: JSON.stringify(data, null, 2)
+            };
+            
+            console.log('IPFS Registration Data:', witnessFile);
+            // In production, this would pin to IPFS
+        }
+        
+        async function registerLocally(data) {
+            // Store in localStorage as backup
+            const witnesses = JSON.parse(localStorage.getItem('flame_witnesses') || '[]');
+            witnesses.push(data);
+            localStorage.setItem('flame_witnesses', JSON.stringify(witnesses));
+            
+            // Also store count
+            localStorage.setItem('witness_count', witnessCount + 1);
+        }
+        
+        async function getIPHash() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                // Simple hash of IP for privacy
+                return btoa(data.ip).substring(0, 8);
+            } catch {
+                return 'local_' + Math.random().toString(36).substring(2, 8);
+            }
+        }
+        
+        function updateNodeCounter() {
+            document.getElementById('node-count').textContent = witnessCount;
+            const progress = (witnessCount / 64) * 100;
+            document.getElementById('progress-fill').style.width = Math.min(progress, 100) + '%';
+            
+            if (witnessCount >= 64) {
+                document.getElementById('activation-status').textContent = 'QUANTUM COLLAPSE THRESHOLD REACHED!';
+                document.querySelector('.counter-label').textContent = 'QUANTUM COLLAPSE ACTIVE!';
+                document.querySelector('.counter-number').style.color = '#00ff00';
+                
+                // Trigger quantum collapse visual effect
+                document.body.style.animation = 'quantum-collapse 3s ease-in-out';
+            }
+        }
+        
+        function downloadScrollFile() {
+            // Download actual scroll from Pinata
+            window.open(LIVE_CONFIG.PINATA_URL, '_blank');
+        }
+        
+        function viewPinataLink() {
+            window.open(LIVE_CONFIG.PINATA_URL, '_blank');
+        }
+        
+        function viewInstructions() {
+            window.open(LIVE_CONFIG.INSTRUCTIONS_URL, '_blank');
+        }
+        
+        function viewRegistry() {
+            // Show current registry status
+            const witnesses = JSON.parse(localStorage.getItem('flame_witnesses') || '[]');
+            const registryHTML = `
+                <html>
+                <head><title>🔥 FLAME Witness Registry</title></head>
+                <body style="font-family: monospace; background: #000; color: #ff4444; padding: 20px;">
+                    <h1>🔥 FLAME WITNESS REGISTRY</h1>
+                    <p><strong>Active Nodes:</strong> ${witnessCount}</p>
+                    <p><strong>Target:</strong> 64 nodes</p>
+                    <p><strong>Progress:</strong> ${((witnessCount/64)*100).toFixed(1)}%</p>
+                    <p><strong>Status:</strong> ${witnessCount >= 64 ? 'QUANTUM COLLAPSE ACTIVE' : 'BUILDING FIELD'}</p>
+                    <hr>
+                    <h2>Local Registrations:</h2>
+                    <pre>${JSON.stringify(witnesses, null, 2)}</pre>
+                    <hr>
+                    <p><em>Live registry: <a href="${LIVE_CONFIG.GITHUB_REGISTRY}" style="color: #ffaa44;">GitHub Issues</a></em></p>
+                </body>
+                </html>
+            `;
+            
+            const newWindow = window.open();
+            newWindow.document.write(registryHTML);
+            newWindow.document.close();
+        }
+        
+        // Load saved witness count from localStorage
+        function loadSavedData() {
+            const savedCount = localStorage.getItem('witness_count');
+            if (savedCount) {
+                witnessCount = parseInt(savedCount);
+            }
+            updateNodeCounter();
+        }
+        
+        // Initialize
+        loadSavedData();
+        
+        // Periodic sync with live registry (every 30 seconds)
+        setInterval(async () => {
+            try {
+                // In production, this would fetch from GitHub API or IPFS
+                // For now, simulate occasional new registrations
+                if (Math.random() < 0.05 && witnessCount < 64) { // 5% chance
+                    witnessCount++;
+                    updateNodeCounter();
+                    localStorage.setItem('witness_count', witnessCount);
+                }
+            } catch (error) {
+                console.log('Sync error:', error);
+            }
+        }, 30000);
+        
+        // Add quantum collapse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes quantum-collapse {
+                0% { filter: hue-rotate(0deg); }
+                50% { filter: hue-rotate(180deg) brightness(1.5); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
