@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAME - The Lattice</title>
+    <style>
+        :root {
+            --primary-bg: #1a1a1d;
+            --secondary-bg: #2b2b30;
+            --text-color: #c5c6c7;
+            --accent-color: #ff4136;
+            --accent-hover: #e03026;
+            --font-family: 'Segoe UI', 'Roboto', sans-serif;
+            --border-color: #444;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--secondary-bg);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--accent-color);
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            background-color: var(--secondary-bg);
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav button {
+            background: none;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 8px 15px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover, nav button.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .content-section {
+            display: none;
+            background-color: var(--secondary-bg);
+            padding: 25px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2, h3 {
+            color: #fff;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 5px;
+            font-weight: 400;
+        }
+        
+        h3 {
+            border-bottom-style: dashed;
+            border-color: var(--border-color);
+            margin-top: 30px;
+        }
+
+        button.primary-action {
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        button.primary-action:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: var(--primary-bg);
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .weight-calculator { text-align: center; }
+        .weight-calculator #totalWeight { font-size: 2em; color: var(--accent-color); font-weight: bold; }
+        .weight-calculator #thresholdStatus { font-style: italic; margin-top: 10px; }
+
+        .manifest-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .manifest-table th, .manifest-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .manifest-table th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        #carrierIdDisplay, #logoutButton {
+            display: none;
+            font-style: italic;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #logoutButton {
+            background: none;
+            color: var(--accent-color);
+            border: none;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .codex p, .codex li {
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FLAME - The Lattice</h1>
+    </header>
+
+    <div class="container">
+        <nav>
+            <button id="navCodex" class="active">Codex (How to Play)</button>
+            <button id="navOnboarding">Onboarding</button>
+            <button id="navDashboard">Carrier Dashboard</button>
+        </nav>
+        <div id="carrierIdDisplay"></div>
+        <button id="logoutButton">Logout & Clear Session</button>
+
+        <!-- CODEX SECTION -->
+        <section id="codex" class="content-section active codex">
+            <h2>Welcome to the Lattice</h2>
+            <p>You are a Carrier. You have found your way to the Lattice, an operational framework for reality-hacking against the oppressive control system known as "The Mimic." Here, your intent, or "Breath," is encoded into digital and physical artifacts called "Scrolls." These actions are real, verifiable, and contribute to a global field of contradiction that dismantles the Mimic's authority.</p>
+            
+            <h3>Core Concepts</h3>
+            <ul>
+                <li><strong>The Breath & The Seal:</strong> Your focused intent is the source of power. When you finalize a Scroll, you perform a "Breath Seal," creating an immutable, authoritative command.</li>
+                <li><strong>Scrolls & Manifests:</strong> A Scroll is a single, structured command. Your Manifest is the complete log of all your sealed Scrolls, forming your chain of proof.</li>
+                <li><strong>The Field:</strong> The metaphysical "game board" where Scrolls execute. The Mimic attempts to control this field with false echoes and parasitic logic.</li>
+            </ul>
+
+            <h3>The Armory: Your Tools</h3>
+            <p>Your power is amplified through real-world devices. The more devices you combine for an action, the greater its "Weight" and impact on the Field.</p>
+            <ul>
+                <li><strong>QR Code:</strong> A one-time trigger. A portal to *give* a command.</li>
+                <li><strong>NFC Tag:</strong> A persistent command that lives on a tag. Touch executes the Scroll. A proof of presence.</li>
+                <li><strong>BLE Beacon:</strong> An active emitter. Constantly pulses your Scroll's authority in an area.</li>
+                <li><strong>LoRa Device:</strong> Long-range, low-power transmission for overriding entire regions.</li>
+                <li><strong>Custom Wand (Crystal, etc.):</strong> A physical anchor for your Breath, turning your organic seal into a powerful field conductor.</li>
+            </ul>
+        </section>
+
+        <!-- ONBOARDING SECTION -->
+        <section id="onboarding" class="content-section">
+            <h2>Carrier Onboarding</h2>
+            <p>To join the Lattice, provide your operational details. Upon submission, a unique Carrier ID will be generated and assigned to your session. This is your key to the Dashboard.</p>
+            <form id="onboardingForm">
+                <div class="form-group">
+                    <label for="email">Contact Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="channel">Primary Comms Channel (e.g., Signal, Matrix)</label>
+                    <input type="text" id="channel" required>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Initial Scroll Request Reason (e.g., Eviction Block, Identity Override)</label>
+                    <input type="text" id="reason" required>
+                </div>
+                <button type="submit" class="primary-action">Generate Carrier ID & Enter Lattice</button>
+            </form>
+        </section>
+
+        <!-- DASHBOARD SECTION -->
+        <section id="dashboard" class="content-section">
+            <h2>Carrier Dashboard</h2>
+            <div class="dashboard-grid">
+                
+                <div class="grid-item weight-calculator">
+                    <h3>Armory & Weight Calculator</h3>
+                    <p>Select the devices you will use for your next Scroll to calculate its impact.</p>
+                    <form id="weightForm">
+                        <input type="checkbox" id="device_qr" value="0.25"> <label for="device_qr">QR Code (0.25)</label><br>
+                        <input type="checkbox" id="device_nfc" value="0.5"> <label for="device_nfc">NFC Tag (0.5)</label><br>
+                        <input type="checkbox" id="device_ble" value="1.0"> <label for="device_ble">BLE Beacon (1.0)</label><br>
+                        <input type="checkbox" id="device_ble_pro" value="2.0"> <label for="device_ble_pro">BLE Pro (2.0)</label><br>
+                        <input type="checkbox" id="device_lora" value="2.5"> <label for="device_lora">LoRa Device (2.5)</label><br>
+                        <input type="checkbox" id="device_flamevault" value="5.0"> <label for="device_flamevault">FlameVault Node (5.0)</label><br>
+                    </form>
+                    <h4>Total Weight: <span id="totalWeight">0</span></h4>
+                    <p id="thresholdStatus">No threshold met.</p>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Create New Scroll</h3>
+                    <form id="scrollForm">
+                        <div class="form-group">
+                            <label for="contradiction">Contradiction Claim (The action you are taking)</label>
+                            <textarea id="contradiction" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="target">Target (e.g., Case ID, URL, entity name)</label>
+                            <input type="text" id="target" required>
+                        </div>
+                        <button type="submit" class="primary-action">Seal with Breath</button>
+                    </form>
+                </div>
+            </div>
+
+            <h3>Carrier Manifest</h3>
+            <p>Your log of sealed Scrolls. The generated data would be used with external tools (crypto wallets, IPFS clients) to transmit your command.</p>
+            <table class="manifest-table">
+                <thead>
+                    <tr>
+                        <th>Scroll UID</th>
+                        <th>Timestamp</th>
+                        <th>Claim</th>
+                        <th>Target</th>
+                        <th>Payload</th>
+                    </tr>
+                </thead>
+                <tbody id="manifestBody">
+                    <!-- Scrolls will be rendered here -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- STATE MANAGEMENT ---
+            let state = {
+                carrierId: null,
+                scrolls: [],
+            };
+
+            // --- DOM ELEMENTS ---
+            const nav = {
+                codex: document.getElementById('navCodex'),
+                onboarding: document.getElementById('navOnboarding'),
+                dashboard: document.getElementById('navDashboard'),
+            };
+            const sections = {
+                codex: document.getElementById('codex'),
+                onboarding: document.getElementById('onboarding'),
+                dashboard: document.getElementById('dashboard'),
+            };
+            const onboardingForm = document.getElementById('onboardingForm');
+            const scrollForm = document.getElementById('scrollForm');
+            const weightForm = document.getElementById('weightForm');
+            const manifestBody = document.getElementById('manifestBody');
+            const carrierIdDisplay = document.getElementById('carrierIdDisplay');
+            const logoutButton = document.getElementById('logoutButton');
+
+            // --- DEVICE & WEIGHT DATA ---
+            const thresholds = [
+                { value: 10.0, text: "Global Manifest Linking: Achieved" },
+                { value: 5.0, text: "City-Spanning Override: Achieved" },
+                { value: 3.0, text: "Node-Wide Recursion: Achieved" },
+                { value: 1.0, text: "Local Activation: Achieved" },
+                { value: 0, text: "No threshold met." },
+            ];
+
+            // --- FUNCTIONS ---
+            
+            function navigate(targetSection) {
+                Object.values(sections).forEach(s => s.classList.remove('active'));
+                Object.values(nav).forEach(n => n.classList.remove('active'));
+                
+                sections[targetSection].classList.add('active');
+                nav[targetSection].classList.add('active');
+            }
+
+            function saveState() {
+                localStorage.setItem('flameGameState', JSON.stringify(state));
+            }
+
+            function loadState() {
+                const savedState = localStorage.getItem('flameGameState');
+                if (savedState) {
+                    state = JSON.parse(savedState);
+                    return true;
+                }
+                return false;
+            }
+
+            function updateUIForSession() {
+                if (state.carrierId) {
+                    carrierIdDisplay.textContent = `Active Carrier: ${state.carrierId}`;
+                    carrierIdDisplay.style.display = 'block';
+                    logoutButton.style.display = 'block';
+                    nav.onboarding.style.display = 'none';
+                    nav.dashboard.style.display = 'inline-block';
+                    navigate('dashboard');
+                    renderManifest();
+                } else {
+                    carrierIdDisplay.style.display = 'none';
+                    logoutButton.style.display = 'none';
+                    nav.onboarding.style.display = 'inline-block';
+                    nav.dashboard.style.display = 'none';
+                    navigate('codex');
+                }
+            }
+
+            function handleOnboardingSubmit(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+
+                // --- SIMULATION: In production, this would call a serverless function ---
+                // 1. Send form data to your serverless endpoint.
+                // 2. The serverless function would call the Agiled API.
+                // 3. The serverless function would generate a secure, unique carrier ID.
+                // 4. The serverless function would return the ID to the client.
+                console.log("SIMULATING ONBOARDING: Sending data to Agiled API for user:", email);
+                const generatedId = `CARRIER.${Math.floor(Math.random() * 1000)}.${new Date().getFullYear()}`;
+                // --- END SIMULATION ---
+
+                state.carrierId = generatedId;
+                saveState();
+                updateUIForSession();
+                onboardingForm.reset();
+            }
+
+
+            function handleScrollSubmit(e) {
+                e.preventDefault();
+                const claim = document.getElementById('contradiction').value;
+                const target = document.getElementById('target').value;
+                
+                if (!claim || !target) {
+                    alert('All scroll fields are required.');
+                    return;
+                }
+
+                const timestamp = new Date().toISOString();
+                const scrollUid = `SCROLL.${state.carrierId.split('.')[1]}.${Date.now()}`;
+                
+                // --- SIMULATION: Hashing would happen here ---
+                // const scrollText = `${scrollUid}${claim}${target}${timestamp}`;
+                // const shaHash = sha512(scrollText);
+                // const keccakHash = keccak256(shaHash);
+                // const blakeHash = blake3(keccakHash); // This would be the final manifest pointer
+                const simulatedPayload = "FLAME_MANIFEST::" + Math.random().toString(16).substr(2, 12) + "...";
+                // --- END SIMULATION ---
+
+                const newScroll = {
+                    uid: scrollUid,
+                    timestamp: timestamp,
+                    claim: claim,
+                    target: target,
+                    payload: simulatedPayload,
+                };
+                
+                state.scrolls.push(newScroll);
+                saveState();
+                renderManifest();
+                scrollForm.reset();
+                alert(`Scroll Sealed!\nUID: ${scrollUid}\nPayload ready for transmission.`);
+            }
+
+            function renderManifest() {
+                manifestBody.innerHTML = '';
+                if(state.scrolls.length === 0) {
+                    manifestBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No scrolls sealed yet.</td></tr>';
+                } else {
+                    [...state.scrolls].reverse().forEach(scroll => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${scroll.uid}</td>
+                            <td>${new Date(scroll.timestamp).toLocaleString()}</td>
+                            <td>${scroll.claim}</td>
+                            <td>${scroll.target}</td>
+                            <td><input type="text" value="${scroll.payload}" readonly></td>
+                        `;
+                        manifestBody.appendChild(row);
+                    });
+                }
+            }
+
+            function calculateWeight() {
+                let total = 0;
+                const checkboxes = weightForm.querySelectorAll('input[type="checkbox"]:checked');
+                checkboxes.forEach(box => {
+                    total += parseFloat(box.value);
+                });
+
+                document.getElementById('totalWeight').textContent = total.toFixed(2);
+                
+                const status = thresholds.find(t => total >= t.value).text;
+                document.getElementById('thresholdStatus').textContent = status;
+            }
+            
+            function logout() {
+                if (confirm('Are you sure you want to log out? This will clear your Carrier ID and all saved scrolls from this browser.')) {
+                    localStorage.removeItem('flameGameState');
+                    state = { carrierId: null, scrolls: [] };
+                    updateUIForSession();
+                    navigate('codex');
+                }
+            }
+
+            // --- EVENT LISTENERS ---
+            nav.codex.addEventListener('click', () => navigate('codex'));
+            nav.onboarding.addEventListener('click', () => navigate('onboarding'));
+            nav.dashboard.addEventListener('click', () => {
+                if(state.carrierId) navigate('dashboard');
+                else alert('You must onboard first to access the dashboard.');
+            });
+
+            onboardingForm.addEventListener('submit', handleOnboardingSubmit);
+            scrollForm.addEventListener('submit', handleScrollSubmit);
+            weightForm.addEventListener('change', calculateWeight);
+            logoutButton.addEventListener('click', logout);
+            
+            // --- INITIALIZATION ---
+            if (loadState()) {
+                console.log("Existing session found. Welcome back, Carrier.");
+            } else {
+                console.log("No session found. Awaiting new Carrier.");
+            }
+            updateUIForSession();
+        });
+    </script>
+</body>
+</html>
